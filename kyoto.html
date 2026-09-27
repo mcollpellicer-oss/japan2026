@@ -50,7 +50,7 @@
         .day-nav {
             background-color: #2d3748;
             display: flex;
-            justify-content: center;
+            justify-content: flex-start;
             gap: 8px;
             padding: 8px 12px;
             position: sticky;
@@ -60,7 +60,9 @@
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             overflow-x: auto;
             white-space: nowrap;
+            scrollbar-width: none;
         }
+        .day-nav::-webkit-scrollbar { display: none; }
         .day-nav a {
             color: #e2e8f0;
             text-decoration: none;
@@ -100,13 +102,13 @@
             font-size: 15px;
         }
         .hotel-base {
-            background-color: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            background-color: #edf2f7;
+            border: 1px solid #cbd5e0;
             border-radius: 8px;
             padding: 14px 18px;
             margin-top: 16px;
             font-size: 14px;
-            color: #f7fafc;
+            color: #2d3748;
             text-align: left;
         }
         .day-card {
@@ -180,6 +182,15 @@
             border-radius: 4px;
             font-size: 12px;
             font-weight: 600;
+        }
+        .spot-link {
+            color: var(--text-main);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .spot-link:hover {
+            color: var(--accent);
+            text-decoration: underline;
         }
         .map-btn {
             display: inline-flex;
@@ -263,10 +274,10 @@
 
     <!-- Day Sub-Navigation Jump Bar -->
     <div class="day-nav">
-        <a href="#kyoto-day1">DAY 1 (OCT 23)</a>
-        <a href="#kyoto-day2">DAY 2 (OCT 24)</a>
-        <a href="#kyoto-day3">DAY 3 (OCT 25)</a>
-        <a href="#kyoto-day4">DAY 4 (OCT 26)</a>
+        <a href="#oct23">OCT 23</a>
+        <a href="#oct24">OCT 24</a>
+        <a href="#oct25">OCT 25</a>
+        <a href="#oct26">OCT 26</a>
     </div>
 
     <div class="container">
@@ -274,7 +285,7 @@
         <!-- Header & Base Setup -->
         <div class="header-card">
             <h1>Kyoto Master Itinerary</h1>
-            <p>4 Days / 3 Nights • Authentic, Aesthetic & Bus-Free</p>
+            <p>Oct 23 – Oct 26 | Authentic, Aesthetic & Bus-Free</p>
             <div class="hotel-base">
                 <strong>🏨 Confirmed Base:</strong> M's Hotel Nijojo Oike (€283 total / Oct 23–26)<br>
                 <strong>📍 Station Hub:</strong> Nijojo-mae Station (Tozai Subway Line) — 3-minute walk.<br>
@@ -283,10 +294,10 @@
         </div>
 
         <!-- ==================== DAY 1 ==================== -->
-        <div class="day-card" id="kyoto-day1">
+        <div class="day-card" id="oct23">
             <div class="day-header">
-                <h2 class="day-title">DAY 1</h2>
-                <span class="day-date">Friday, Oct 23</span>
+                <h2 class="day-title">THE NORTHERN CANAL & ILLUMINATIONS</h2>
+                <span class="day-date">Fri, Oct 23</span>
             </div>
 
             <div class="top-tips">
@@ -298,12 +309,12 @@
             </div>
 
             <div class="time-block">
-                <h3><span class="time-badge">11:30 AM</span> Arrival & Hotel Drop</h3>
+                <h3><span class="time-badge">11:30 AM</span> <a href="https://www.google.com/maps/search/?api=1&query=M's+Hotel+Nijojo+Oike" target="_blank" class="spot-link">Arrival & Hotel Drop</a></h3>
                 <p>Arrive from Kanazawa via the direct <em>JR Thunderbird Limited Express</em> (~2 hours). Transfer to the Karasuma Subway Line to Karasuma-Oike, switch 1 stop on the Tozai Line to <strong>Nijojo-mae Station</strong>. Drop bags at M's Hotel Nijojo Oike.</p>
             </div>
 
             <div class="time-block">
-                <h3><span class="time-badge">01:30 PM</span> Northern Canal & Philosopher's Path Walk</h3>
+                <h3><span class="time-badge">01:30 PM</span> <a href="https://www.google.com/maps/search/?api=1&query=Philosopher's+Path+Kyoto" target="_blank" class="spot-link">Northern Canal & Philosopher's Path Walk</a></h3>
                 <p>Take the Tozai Line directly from Nijojo-mae to <strong>Keage Station</strong>. Walk through the massive wooden Sanmon Gate at <strong>Nanzen-ji</strong>, inspect the 1890s Western brick <strong>Suirokaku Aqueduct</strong>, then follow the quiet canal path north past the moss-covered gate of <strong>Honen-in</strong> to <strong>Ginkaku-ji</strong> (Silver Pavilion).</p>
             </div>
 
@@ -317,7 +328,7 @@
             <a class="map-btn" href="https://www.google.com/maps/dir/Nijojo-mae+Station/Keage+Station/Nanzen-ji/Honen-in/Ginkaku-ji" target="_blank">📍 Open Day 1 Afternoon Map (Subway + Philosopher's Path)</a>
 
             <div class="time-block">
-                <h3><span class="time-badge">05:30 PM</span> Southern Higashiyama Autumn Night Illuminations</h3>
+                <h3><span class="time-badge">05:30 PM</span> <a href="https://www.google.com/maps/search/?api=1&query=Kiyomizu-dera+Kyoto" target="_blank" class="spot-link">Southern Higashiyama Autumn Night Illuminations</a></h3>
                 <p>Stroll through the preserved lantern-lit stone alleys of <strong>Ninenzaka & Sannenzaka</strong>. Visit <strong>Kiyomizu-dera</strong> to experience the pitch-black <em>Tainai-meguri</em> tunnel beneath the hall and view the temple stage lit against the night sky, followed by the glowing moss gardens at <strong>Kodai-ji</strong>.</p>
             </div>
 
@@ -346,10 +357,10 @@
         </div>
 
         <!-- ==================== DAY 2 ==================== -->
-        <div class="day-card" id="kyoto-day2">
+        <div class="day-card" id="oct24">
             <div class="day-header">
-                <h2 class="day-title">DAY 2</h2>
-                <span class="day-date">Saturday, Oct 24</span>
+                <h2 class="day-title">SHRINES, MATCHA & DEER</h2>
+                <span class="day-date">Sat, Oct 24</span>
             </div>
 
             <div class="top-tips">
@@ -361,7 +372,7 @@
             </div>
 
             <div class="time-block">
-                <h3><span class="time-badge">07:00 AM</span> Fushimi Inari-taisha</h3>
+                <h3><span class="time-badge">07:00 AM</span> <a href="https://www.google.com/maps/search/?api=1&query=Fushimi+Inari+Taisha+Kyoto" target="_blank" class="spot-link">Fushimi Inari-taisha</a></h3>
                 <p>From M's Hotel, take the Tozai Subway 2 stops to Sanjo-Keihan and transfer to the Keihan Main Line down to <strong>Fushimi-Inari Station</strong>. Walk through the <em>Senbon Torii</em> (thousands of vermilion gates) up to the Yotsutsuji intersection for city panoramas. Take a break at <strong>Inari Saryo</strong> on the descent.</p>
             </div>
 
@@ -372,7 +383,7 @@
             </details>
 
             <div class="time-block">
-                <h3><span class="time-badge">10:00 AM</span> Uji Matcha Capital</h3>
+                <h3><span class="time-badge">10:00 AM</span> <a href="https://www.google.com/maps/search/?api=1&query=Byodo-in+Temple+Uji" target="_blank" class="spot-link">Uji Matcha Capital</a></h3>
                 <p>Hop on the southbound JR Nara Line to <strong>Uji Station</strong>. Visit <strong>Byodo-in Temple</strong> (Phoenix Hall) on its reflection pond and cross the river to <strong>Ujigami-jinja</strong> (Japan's oldest standing Shinto shrine).</p>
             </div>
 
@@ -383,7 +394,7 @@
             </details>
 
             <div class="time-block">
-                <h3><span class="time-badge">01:30 PM</span> Wonders of Nara Walking Tour</h3>
+                <h3><span class="time-badge">01:30 PM</span> <a href="https://www.google.com/maps/search/?api=1&query=Todai-ji+Nara" target="_blank" class="spot-link">Wonders of Nara Walking Tour</a></h3>
                 <p>Continue south on the JR line to <strong>Nara Station</strong>. Execute the 5.3km walking route: Yoshikien Garden ➔ <strong>Todai-ji (Daibutsu Great Buddha)</strong> ➔ Nigatsu-do views ➔ forest trail to <strong>Kasuga Taisha</strong> shrine ➔ Naramachi district.</p>
             </div>
 
@@ -413,10 +424,10 @@
         </div>
 
         <!-- ==================== DAY 3 ==================== -->
-        <div class="day-card" id="kyoto-day3">
+        <div class="day-card" id="oct25">
             <div class="day-header">
-                <h2 class="day-title">DAY 3</h2>
-                <span class="day-date">Sunday, Oct 25</span>
+                <h2 class="day-title">BAMBOO & THE TENJIN-SAN MARKET</h2>
+                <span class="day-date">Sun, Oct 25</span>
             </div>
 
             <div class="top-tips">
@@ -429,7 +440,7 @@
             </div>
 
             <div class="time-block">
-                <h3><span class="time-badge">07:30 AM</span> Arashiyama Bamboo & Villa Gardens</h3>
+                <h3><span class="time-badge">07:30 AM</span> <a href="https://www.google.com/maps/search/?api=1&query=Arashiyama+Bamboo+Grove" target="_blank" class="spot-link">Arashiyama Bamboo & Villa Gardens</a></h3>
                 <p>Walk 8 minutes from M's Hotel to <strong>JR Nijo Station</strong> and take the train directly to <strong>Saga-Arashiyama Station</strong> (10 mins). Walk through the silent <strong>Bamboo Grove</strong>, enter <strong>Okochi Sanso Villa</strong> for matcha with gorge views, and pass through <strong>Tenryu-ji Garden</strong> down to Togetsu-kyo Bridge.</p>
             </div>
 
@@ -442,12 +453,12 @@
             <a class="map-btn" href="https://www.google.com/maps/dir/Saga-Arashiyama+Station/Arashiyama+Bamboo+Grove/Okochi+Sanso+Garden/Tenryu-ji/Togetsukyo+Bridge" target="_blank">📍 Open Day 3 Morning Map (Arashiyama Route)</a>
 
             <div class="time-block">
-                <h3><span class="time-badge">11:30 AM</span> Tenjin-san Antique Market (Oct 25 Only)</h3>
+                <h3><span class="time-badge">11:30 AM</span> <a href="https://www.google.com/maps/search/?api=1&query=Kitano+Tenmangu+Kyoto" target="_blank" class="spot-link">Tenjin-san Antique Market (Oct 25 Only)</a></h3>
                 <p>Take the Keifuku Randen tram from Arashiyama to Kitano-Hakubaicho. Walk to <strong>Kitano Tenman-gu</strong> shrine for the famous monthly <strong>Tenjin-san Flea Market</strong>. Browse hundreds of outdoor stalls selling antique ceramics, vintage kimono fabrics, woodblock prints, and street food.</p>
             </div>
 
             <div class="time-block">
-                <h3><span class="time-badge">02:00 PM</span> Northwest Zen Quick Hits</h3>
+                <h3><span class="time-badge">02:00 PM</span> <a href="https://www.google.com/maps/search/?api=1&query=Ryoan-ji+Kyoto" target="_blank" class="spot-link">Northwest Zen Quick Hits</a></h3>
                 <p>Surgical strike to <strong>Ryoan-ji</strong> to contemplate the famous Zen rock garden, followed by <strong>Kinkaku-ji</strong> (Golden Pavilion). Take the iconic photo across the pond and leave promptly.</p>
             </div>
 
@@ -457,7 +468,7 @@
             </details>
 
             <div class="time-block">
-                <h3><span class="time-badge">05:30 PM</span> Geiko District Twilight Stroll</h3>
+                <h3><span class="time-badge">05:30 PM</span> <a href="https://www.google.com/maps/search/?api=1&query=Pontocho+Kyoto" target="_blank" class="spot-link">Geiko District Twilight Stroll</a></h3>
                 <p>Return to central Kyoto. Execute the self-guided evening walk: <strong>Yasaka-jinja</strong> ➔ historic dark-wood alleys of <strong>Hanami-koji</strong> ➔ <strong>Tatsumi-bashi bridge</strong> in Shimbashi ➔ across the river to lantern-lit <strong>Ponto-cho Alley</strong> and <strong>Kiyamachi-dori canal</strong>.</p>
             </div>
 
@@ -480,10 +491,10 @@
         </div>
 
         <!-- ==================== DAY 4 ==================== -->
-        <div class="day-card" id="kyoto-day4">
+        <div class="day-card" id="oct26">
             <div class="day-header">
-                <h2 class="day-title">DAY 4</h2>
-                <span class="day-date">Monday, Oct 26</span>
+                <h2 class="day-title">RIVERSIDE MORNING & DEPARTURE</h2>
+                <span class="day-date">Mon, Oct 26</span>
             </div>
 
             <div class="top-tips">
@@ -494,12 +505,12 @@
             </div>
 
             <div class="time-block">
-                <h3><span class="time-badge">09:00 AM</span> Kamo-gawa River Walk & Stepping Stones</h3>
+                <h3><span class="time-badge">09:00 AM</span> <a href="https://www.google.com/maps/search/?api=1&query=Kamogawa+Delta+Kyoto" target="_blank" class="spot-link">Kamo-gawa River Walk & Stepping Stones</a></h3>
                 <p>Take a morning stroll or bike ride along the <strong>Kamo-gawa river path</strong> up to the Kamo-gawa Delta to hop across the giant turtle-shaped stepping stones in the water.</p>
             </div>
 
             <div class="time-block">
-                <h3><span class="time-badge">11:30 AM</span> Check-Out & Osaka Transition</h3>
+                <h3><span class="time-badge">11:30 AM</span> <a href="https://www.google.com/maps/search/?api=1&query=Kyoto+Station" target="_blank" class="spot-link">Check-Out & Osaka Transition</a></h3>
                 <p>Check out from M's Hotel Nijojo Oike. Take the subway to Kyoto Station and board the rapid train to Osaka (Namba) to drop main bags before heading up to <strong>Koyasan (Sainan-in Temple)</strong> on Tuesday, Oct 27.</p>
             </div>
 
