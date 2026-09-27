@@ -1,575 +1,430 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Japan 2026 - Regional Leg</title>
-  <style>
-    :root {
-      --bg: #f8fafc;
-      --card-bg: #ffffff;
-      --accent: #d97706; /* Gold accent for the regional leg */
-      --accent-gold: #b45309;
-      --text: #0f172a;
-      --text-muted: #64748b;
-      --border: #e2e8f0;
-      --walk-bg: #f0fdf4;
-      --walk-border: #bbf7d0;
-      --walk-text: #166534;
-      --prep-bg: #fffbeb;
-      --prep-border: #fef3c7;
-      --prep-text: #b45309;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
-    body { background-color: var(--bg); color: var(--text); padding-bottom: 80px; }
-    
-    .top-bar { position: sticky; top: 0; z-index: 100; background: rgba(248, 250, 252, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); padding: 12px 16px; }
-    .search-box { width: 100%; padding: 12px 16px; border-radius: 12px; border: 1px solid var(--border); background: #ffffff; color: var(--text); font-size: 15px; outline: none; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
-    
-    .date-scroller { display: flex; gap: 8px; overflow-x: auto; padding: 12px 16px; background: #ffffff; border-bottom: 1px solid var(--border); scrollbar-width: none; }
-    .date-scroller::-webkit-scrollbar { display: none; }
-    .date-btn { flex: 0 0 auto; padding: 8px 16px; border-radius: 20px; border: 1px solid var(--border); background: var(--bg); color: var(--text-muted); font-size: 13px; font-weight: 600; cursor: pointer; }
-    .date-btn.active { background: var(--accent); color: #ffffff; border-color: var(--accent); }
-    
-    .container { padding: 16px; max-width: 650px; margin: 0 auto; }
-    
-    .hero-banner { background: linear-gradient(135deg, #78350f 0%, #451a03 100%); border-radius: 16px; padding: 24px 20px; border: 1px solid var(--border); margin-bottom: 20px; text-align: center; color: #ffffff; }
-    .hero-banner h1 { font-size: 26px; font-weight: 800; letter-spacing: -0.5px; }
-    .hero-banner p { font-size: 13px; color: #fde68a; margin-top: 6px; font-weight: 500; }
-    
-    .day-header { margin: 24px 0 14px; font-size: 18px; font-weight: 800; color: var(--accent); display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--border); padding-bottom: 8px; }
-    
-    .card { background: var(--card-bg); border-radius: 14px; border: 1px solid var(--border); padding: 16px; margin-bottom: 14px; box-shadow: 0 1px 3px rgba(0,0,0,0.03); }
-    .card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
-    .time-badge { font-size: 12px; font-weight: 800; color: var(--accent); background: #fef3c7; padding: 4px 10px; border-radius: 6px; }
-    .spot-title { font-size: 17px; font-weight: 700; color: var(--text); text-decoration: none; display: inline-block; }
-    .spot-title:hover { text-decoration: underline; color: var(--accent); }
-    
-    .segment-card { background: var(--walk-bg); border: 1px solid var(--walk-border); border-radius: 12px; padding: 12px 14px; margin: 10px 0 14px 20px; position: relative; }
-    .segment-card::before { content: ""; position: absolute; left: -13px; top: -14px; bottom: 100%; width: 2px; background: var(--walk-border); }
-    .segment-title { font-size: 13px; font-weight: 700; color: var(--walk-text); display: flex; align-items: center; justify-content: space-between; }
-    .segment-desc { font-size: 13px; color: #15803d; margin-top: 6px; line-height: 1.5; }
-    
-    .prep-box { background: var(--prep-bg); border: 1px solid var(--prep-border); border-radius: 12px; padding: 12px 14px; margin-bottom: 16px; font-size: 13px; color: var(--prep-text); line-height: 1.5; }
-    .prep-title { font-weight: 800; margin-bottom: 4px; display: flex; align-items: center; gap: 6px; }
-    
-    .map-btn { display: inline-block; font-size: 12.5px; font-weight: 700; color: #ffffff; background: var(--accent); border: none; padding: 8px 12px; border-radius: 8px; text-decoration: none; margin-top: 10px; text-align: center; }
-    .map-btn:hover { background: var(--accent-gold); }
-    
-    details { margin-top: 10px; border-top: 1px dashed var(--border); padding-top: 10px; }
-    summary { font-size: 13px; font-weight: 700; color: var(--accent-gold); cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
-    summary::-webkit-details-marker { display: none; }
-    summary::after { content: "＋ Expand Detailed Notes"; font-size: 12px; }
-    details[open] summary::after { content: "－ Collapse Notes"; }
-    .guide-body { font-size: 13.5px; color: #334155; line-height: 1.6; margin-top: 10px; padding: 12px; background: #f8fafc; border-radius: 8px; border-left: 3px solid var(--accent-gold); }
-    .guide-body ul, .guide-body ol { padding-left: 18px; margin-top: 6px; }
-    .guide-body li { margin-bottom: 6px; }
-    .step-tag { display: inline-block; font-size: 11px; font-weight: 700; color: #b45309; background: #fef3c7; padding: 2px 6px; border-radius: 4px; margin-right: 4px; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanazawa & Yamanaka Onsen - Japan 2026</title>
+    <style>
+        :root {
+            --primary-bg: #f9f9f7;
+            --card-bg: #ffffff;
+            --text-main: #2c3e50;
+            --accent: #2f855a; /* Forest green accent for gardens & gorge */
+            --accent-dark: #1c4532;
+            --border: #e2e8f0;
+            --subtle-bg: #f8fafc;
+            --tip-bg: #f0fff4;
+            --tip-border: #38a169;
+        }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--primary-bg);
+            color: var(--text-main);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        nav {
+            background-color: #1a202c;
+            display: flex;
+            justify-content: space-around;
+            padding: 14px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+        nav a {
+            color: #cbd5e0;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+            transition: color 0.2s;
+        }
+        nav a:hover, nav a.active {
+            color: #ffffff;
+            border-bottom: 2px solid var(--accent);
+        }
+        .day-nav {
+            background-color: #2d3748;
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            padding: 8px 12px;
+            position: sticky;
+            top: 49px;
+            z-index: 999;
+            border-top: 1px solid #4a5568;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+        .day-nav a {
+            color: #e2e8f0;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 14px;
+            background-color: #4a5568;
+            transition: all 0.2s;
+        }
+        .day-nav a:hover {
+            background-color: var(--accent);
+            color: white;
+        }
+        .container {
+            padding: 24px 16px;
+            max-width: 850px;
+            margin: 0 auto;
+        }
+        .header-card {
+            background: linear-gradient(135deg, #1c4532, #2c3e50);
+            color: white;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 28px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .header-card h1 {
+            margin: 0 0 8px 0;
+            font-size: 28px;
+            letter-spacing: 1px;
+        }
+        .header-card p {
+            margin: 0;
+            color: #e2e8f0;
+            font-size: 15px;
+        }
+        .hotel-base {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            padding: 14px 18px;
+            margin-top: 16px;
+            font-size: 14px;
+            color: #f7fafc;
+            text-align: left;
+        }
+        .day-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 22px;
+            margin-bottom: 32px;
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+            scroll-margin-top: 95px;
+        }
+        .day-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 10px;
+            margin-bottom: 18px;
+        }
+        .day-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--accent);
+            margin: 0;
+        }
+        .day-date {
+            font-size: 14px;
+            font-weight: 600;
+            background-color: #f0fff4;
+            color: var(--accent-dark);
+            padding: 4px 12px;
+            border-radius: 16px;
+            border: 1px solid #c6f6d5;
+        }
+        .top-tips {
+            background-color: var(--tip-bg);
+            border-left: 4px solid var(--tip-border);
+            padding: 14px 16px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        .top-tips strong {
+            color: #2f855a;
+            display: block;
+            margin-bottom: 6px;
+            font-size: 15px;
+        }
+        .top-tips ul {
+            margin: 0;
+            padding-left: 18px;
+        }
+        .top-tips li {
+            margin-bottom: 4px;
+        }
+        .time-block {
+            margin-bottom: 20px;
+        }
+        .time-block h3 {
+            font-size: 16px;
+            color: #1a202c;
+            margin: 0 0 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .time-badge {
+            background-color: #2d3748;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        .map-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            width: 100%;
+            background-color: #2d3748;
+            color: white;
+            text-decoration: none;
+            padding: 11px 0;
+            border-radius: 8px;
+            margin: 16px 0;
+            font-weight: 600;
+            font-size: 14px;
+            transition: background-color 0.2s;
+        }
+        .map-btn:hover {
+            background-color: #1a202c;
+        }
+        .meals-box {
+            background-color: var(--subtle-bg);
+            border: 1px solid var(--border);
+            padding: 16px;
+            border-radius: 8px;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+        .meals-box h4 {
+            margin: 0 0 10px 0;
+            color: #2d3748;
+            font-size: 15px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 6px;
+        }
+        .meals-box ul {
+            margin: 0;
+            padding-left: 18px;
+        }
+        .meals-box li {
+            margin-bottom: 6px;
+        }
+        .transit-alert {
+            border-left: 4px solid var(--accent);
+            padding: 10px 14px;
+            font-size: 13.5px;
+            margin: 16px 0;
+            background-color: #f7fafc;
+            color: #4a5568;
+        }
+        details {
+            background-color: #ffffff;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 10px 14px;
+            margin: 12px 0;
+        }
+        summary {
+            font-weight: 600;
+            cursor: pointer;
+            color: var(--accent);
+            font-size: 14px;
+        }
+        details p {
+            font-size: 13.5px;
+            margin: 10px 0 4px 0;
+            color: #4a5568;
+            line-height: 1.5;
+        }
+    </style>
 </head>
 <body>
 
-  <nav style="display: flex; justify-content: space-around; background: #0f172a; padding: 10px; font-size: 13px; font-weight: 700;">
-  <a href="index.html" style="color: #94a3b8; text-decoration: none;">1. Tokyo</a>
-  <a href="regional.html" style="color: #f59e0b; text-decoration: none;">2. Regional</a>
-  <a href="kyoto.html" style="color: #94a3b8; text-decoration: none;">3. Kyoto</a>
-</nav>
+    <!-- Main Navigation Bar -->
+    <nav>
+        <a href="index.html">TOKYO</a>
+        <a href="regional.html" class="active">KANAZAWA</a>
+        <a href="kyoto.html">KYOTO</a>
+        <a href="osaka.html">OSAKA & KOYASAN</a>
+    </nav>
 
-  <div class="top-bar">
-    <input type="text" id="searchInput" class="search-box" placeholder="🔍 Search spot, sushi, samurai, onsen..." onkeyup="filterSchedule()">
-  </div>
-
-  <div class="date-scroller" id="dateScroller">
-    <button class="date-btn active" onclick="showDay('homeSummary')">Region Hub</button>
-    <button class="date-btn" onclick="showDay('oct18')">Sun Oct 18</button>
-    <button class="date-btn" onclick="showDay('oct19')">Mon Oct 19</button>
-    <button class="date-btn" onclick="showDay('oct20')">Tue Oct 20</button>
-    <button class="date-btn" onclick="showDay('oct21')">Wed Oct 21</button>
-    <button class="date-btn" onclick="showDay('oct22')">Thu Oct 22</button>
-  </div>
-
-  <div class="container">
-    
-    <div class="hero-banner">
-      <h1>🏯 REGIONAL LEG</h1>
-      <p>Kanazawa & Yamanaka Onsen | Oct 18 – Oct 23</p>
+    <!-- Day Sub-Navigation Jump Bar -->
+    <div class="day-nav">
+        <a href="#kanazawa-day1">DAY 4: KANAZAWA CASTLE & GARDENS</a>
+        <a href="#kanazawa-day2">DAY 5: SAMURAI & MARKET</a>
+        <a href="#yamanaka-day">DAY 6: YAMANAKA ONSEN RYOKAN</a>
     </div>
 
-    <!-- Home Summary -->
-    <div id="homeSummary" class="day-section">
-      <div class="card">
-        <h3 style="color: var(--accent); margin-bottom: 6px;">📍 Base 1: HOTEL AMANEK Kanazawa</h3>
-        <p style="font-size: 13.5px; color: #475569; line-height: 1.5;">
-          <strong>Dates:</strong> Oct 18 - 20 & Oct 22 - 23<br>
-          <strong>Focus:</strong> Minimalist wood design, central Katamachi location, Edo-period gardens, geisha districts, samurai lanes, and Sea of Japan seafood.
-        </p>
-      </div>
-      <div class="card">
-        <h3 style="color: var(--accent); margin-bottom: 6px;">♨️ Base 2: Shirasagiyu Tawaraya</h3>
-        <p style="font-size: 13.5px; color: #475569; line-height: 1.5;">
-          <strong>Dates:</strong> Oct 20 - 22 (2 Nights)<br>
-          <strong>Focus:</strong> 800-year-old ryokan, Kakusenkei Gorge river views, open-air rotenburo bathing, and multi-course kaiseki dining.
-        </p>
-      </div>
+    <div class="container">
+        
+        <!-- Header & Base Setup -->
+        <div class="header-card">
+            <h1>Kanazawa & Yamanaka Onsen</h1>
+            <p>Crafts, Castle Grounds & 800-Year-Old Onsen Sanctuary</p>
+            <div class="hotel-base">
+                <strong>🏨 Kanazawa Base:</strong> Boutique Stay near Kenroku-en & Higashi Chaya<br>
+                <strong>♨️ Onsen Sanctuary:</strong> Shirasagiyu Tawaraya (Yamanaka Onsen) — 800-year-old hot spring ryokan overlooking Kakusenkei Gorge.<br>
+                <strong>💡 Logistics Advantage:</strong> Hokuriku Shinkansen from Tokyo (2.5h), direct shuttle to Yamanaka Onsen, and Thunderbird train south to Kyoto.
+            </div>
+        </div>
+
+        <!-- ==================== KANAZAWA DAY 1 ==================== -->
+        <div class="day-card" id="kanazawa-day1">
+            <div class="day-header">
+                <h2 class="day-title">KANAZAWA DAY 1</h2>
+                <span class="day-date">Wednesday, Oct 21</span>
+            </div>
+
+            <div class="top-tips">
+                <strong>🎯 DAY 1 TOP TIPS & STRATEGY</strong>
+                <ul>
+                    <li><strong>Bullet Train Arrival:</strong> Ride the Hokuriku Shinkansen straight from Tokyo Station to Kanazawa Station (~2.5h). Inspect the monumental wooden Tsuzumi-mon Gate at the station exit.</li>
+                    <li><strong>Kenroku-en Lighting:</strong> Visit Kenroku-en in the late afternoon to see the early preparation of *Yukitsuri* (traditional rope cones erected to protect ancient pine branches from heavy snow).</li>
+                </ul>
+            </div>
+
+            <div class="time-block">
+                <h3><span class="time-badge">11:00 AM</span> Arrival & Kenroku-en Garden</h3>
+                <p>Arrive in Kanazawa. Check in / drop luggage at hotel. Walk straight into <strong>Kenroku-en</strong>, universally celebrated as one of Japan's "Three Great Landscape Gardens."</p>
+            </div>
+
+            <details>
+                <summary>💡 Cultural Context: Kenroku-en & Six Attributes</summary>
+                <p><strong>Kenroku-en:</strong> Translates to the "Garden of Six Attributes." According to Chinese landscape theory, a perfect garden must balance six opposing qualities: spaciousness vs. seclusion, artifice vs. antiquity, water features vs. panoramic views.</p>
+                <p><strong>Kotojitoro Lantern:</strong> The famous two-legged stone lantern standing at the edge of Kasumigaike Pond, designed to resemble the bridge of a Japanese koto zither.</p>
+            </details>
+
+            <div class="time-block">
+                <h3><span class="time-badge">02:00 PM</span> Kanazawa Castle Park & Gyokusen'inmaru</h3>
+                <p>Walk across the bridge into <strong>Kanazawa Castle Park</strong>. Visit the pristine, restored wooden **Gyokusen'inmaru Garden** and enjoy whisked matcha inside the traditional tea house overlooking the stepped stone walls.</p>
+            </div>
+
+            <div class="time-block">
+                <h3><span class="time-badge">05:00 PM</span> Higashi Chaya Geisha District Twilight Walk</h3>
+                <p>Explore the preserved dark-wood lattice teahouses (*Kagashimi*) of **Higashi Chaya**. Visit **Hakuichi** to try Kanazawa's famous edible gold-leaf ice cream.</p>
+            </div>
+
+            <a class="map-btn" href="https://www.google.com/maps/dir/Kanazawa+Station/Kenroku-en/Kanazawa+Castle+Park/Higashi+Chaya+District" target="_blank">📍 Open Kanazawa Day 1 Route Map</a>
+
+            <div class="meals-box">
+                <h4>🍽️ Kanazawa Day 1 Meal Plan</h4>
+                <ul>
+                    <li><strong>Lunch:</strong> Fresh Kantenba seafood or Kanazawa-style curry at <em>Champion's Curry</em>.</li>
+                    <li><strong>Matcha Break:</strong> Whisked matcha and wagashi at <em>Gyokusenan</em> inside Gyokusen'inmaru Garden.</li>
+                    <li><strong>Dinner:</strong> Fresh Sea of Japan seafood & Noto beef at <em>Kotobukiya</em> or local izakaya <em>Itaru Honten</em> (famous for blackthroat seaperch / Nodoguro).</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ==================== KANAZAWA DAY 2 ==================== -->
+        <div class="day-card" id="kanazawa-day2">
+            <div class="day-header">
+                <h2 class="day-title">KANAZAWA DAY 2</h2>
+                <span class="day-date">Thursday, Oct 22</span>
+            </div>
+
+            <div class="top-tips">
+                <strong>🎯 DAY 2 TOP TIPS & STRATEGY</strong>
+                <ul>
+                    <li><strong>Omicho Market Seafood:</strong> Visit Omicho Market right at 8:30 AM for peak fresh crab and sea urchin before the lunch rush.</li>
+                    <li><strong>21st Century Museum:</strong> Book tickets online for Leandro Erlich's famous "Swimming Pool" installation.</li>
+                </ul>
+            </div>
+
+            <div class="time-block">
+                <h3><span class="time-badge">08:30 AM</span> Omicho Market Morning Feast</h3>
+                <p>Walk through the bustling corridors of <strong>Omicho Market</strong>, Kanazawa's "Kitchen" since the Edo period. Watch fishmongers prepare local snow crab and sweet shrimp.</p>
+            </div>
+
+            <div class="time-block">
+                <h3><span class="time-badge">10:30 AM</span> Nagamachi Samurai District & Nomura House</h3>
+                <p>Stroll between the preserved mud walls and cobblestone lanes of the **Nagamachi Samurai District**. Enter **Nomura Samurai House** to view a genuine Edo-period samurai garden and armor collection.</p>
+            </div>
+
+            <details>
+                <summary>💡 Cultural Context: Nomura Samurai House</summary>
+                <p><strong>Nomura House:</strong> Home to a high-ranking samurai family serving the Maeda Clan. Its courtyard garden features a crystal-clear stream fed by the historic Onosho Canal, ancient bayberry trees, and a waterfall framed by stone lanterns.</p>
+            </details>
+
+            <div class="time-block">
+                <h3><span class="time-badge">02:00 PM</span> 21st Century Museum of Contemporary Art</h3>
+                <p>Explore the circular glass museum building designed by SANAA, featuring modern art installations integrated into open courtyards.</p>
+            </div>
+
+            <a class="map-btn" href="https://www.google.com/maps/dir/Omicho+Market/Nagamachi+Samurai+District/Nomura+Samurai+House/21st+Century+Museum+of+Contemporary+Art" target="_blank">📍 Open Kanazawa Day 2 Route Map</a>
+
+            <div class="meals-box">
+                <h4>🍽️ Kanazawa Day 2 Meal Plan</h4>
+                <ul>
+                    <li><strong>Breakfast / Seafood:</strong> Kaisen-don bowl overflowing with fresh local sashimi at <em>Omicho Shokudo</em> or <em>Iki-iki Tei</em>.</li>
+                    <li><strong>Coffee Break:</strong> Drip coffee at <em>Curio Espresso & Vintage Design</em>.</li>
+                    <li><strong>Dinner:</strong> Modern Kanazawa Kappo cuisine at <em>Aoi</em> or charcoal-grilled skewers at <em>Fugetsu</em>.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ==================== YAMANAKA ONSEN ==================== -->
+        <div class="day-card" id="yamanaka-day">
+            <div class="day-header">
+                <h2 class="day-title">YAMANAKA ONSEN SANCTUARY</h2>
+                <span class="day-date">Friday, Oct 23</span>
+            </div>
+
+            <div class="top-tips">
+                <strong>🎯 ONSEN DAY TOP TIPS & STRATEGY</strong>
+                <ul>
+                    <li><strong>Ryokan Onsen Etiquette:</strong> Wash thoroughly at the wooden sit-down shower stalls before stepping into the communal thermal waters. No swimwear allowed; small hand towels stay out of the bathwater.</li>
+                    <li><strong>Ryokan Check-in:</strong> Arrive by 03:00 PM to maximize relaxation, enjoy your private in-room tea service, and reserve your private open-air bath (*Rotenburo*) time slot.</li>
+                </ul>
+            </div>
+
+            <div class="time-block">
+                <h3><span class="time-badge">12:30 PM</span> Transit to Yamanaka Onsen Valley</h3>
+                <p>Board the local shuttle or train down to Kaga-Onsen Station and transit into the lush mountain valley of **Yamanaka Onsen**.</p>
+            </div>
+
+            <div class="time-block">
+                <h3><span class="time-badge">01:30 PM</span> Kakusenkei Gorge & Ayatori Bridge Walk</h3>
+                <p>Walk along the serene 1.3km **Kakusenkei Gorge** stone path following the roaring mountain river. Cross the magenta, S-curved **Ayatori Bridge** designed by Hiroshi Teshigahara and visit the rustic **Koroan Tea House** set right along the water rapids.</p>
+            </div>
+
+            <details>
+                <summary>💡 Cultural Context: Yamanaka Onsen & Matsuo Basho</summary>
+                <p><strong>800-Year Thermal History:</strong> Discovered over 1,300 years ago by a Buddhist monk, Yamanaka is famous for hydrogen-rich, mineral bathwaters praised by legendary haiku poet Matsuo Basho as one of Japan's top three healing hot springs.</p>
+                <p><strong>Yamanaka Lacquerware (*Shuraku*):</strong> The town is world-renowned for exquisite hand-turned wood lacquerware, where artisans carve raw timber into delicate tea caddies and soup bowls showcasing natural wood grain.</p>
+            </details>
+
+            <div class="time-block">
+                <h3><span class="time-badge">03:30 PM</span> Ryokan Check-In: Shirasagiyu Tawaraya</h3>
+                <p>Check into **Shirasagiyu Tawaraya** (operating continuously for 800 years). Change into traditional *Yukata* robes, soak in the open-air hot spring baths overlooking the forest gorge, and prepare for your multi-course Kaiseki banquet.</p>
+            </div>
+
+            <a class="map-btn" href="https://www.google.com/maps/dir/Kakusenkei+Gorge/Ayatori+Bridge/Shirasagiyu+Tawaraya" target="_blank">📍 Open Yamanaka Onsen Gorge Map</a>
+
+            <div class="meals-box">
+                <h4>🍽️ Ryokan Feast & Onsen Dining</h4>
+                <ul>
+                    <li><strong>Tea Welcome:</strong> In-room whisked green tea and artisan sweet upon arrival at the ryokan.</li>
+                    <li><strong>Ryokan Dinner Banquet:</strong> Multi-course seasonal *Kaiseki* meal served in your room/private dining hall, featuring Noto beef, fresh Sea of Japan crab, seasonal mountain vegetables (*Sansai*), and local Ishikawa sake.</li>
+                    <li><strong>Next Morning Breakfast:</strong> Traditional Japanese ryokan breakfast with grilled local fish, miso soup cooked over clay stoves, and mountain rice.</li>
+                </ul>
+            </div>
+        </div>
+
     </div>
 
-    <!-- Oct 18 -->
-    <div id="oct18" class="day-section" style="display:none;">
-      <div class="day-header">
-        <span>Sunday, Oct 18: Shinkansen & Geisha Quarters</span>
-      </div>
-
-      <div class="prep-box">
-        <div class="prep-title">📋 Day Preparation Notes</div>
-        Travel day! Check out of your Ebisu hotel and grab a relaxed coffee. Buy a regional *ekiben* (bento box) at Tokyo Station before boarding the express Hokuriku Shinkansen.
-      </div>
-
-      <div class="card">
-        <div class="card-top">
-          <span class="time-badge">10:22</span>
-          <a href="https://www.google.com/maps/search/?api=1&query=Tokyo+Station" target="_blank" class="spot-title">Hokuriku Shinkansen @ Tokyo Station</a>
-        </div>
-        <details>
-          <summary>Train Logistics & Ekiben</summary>
-          <div class="guide-body">
-            Board the <strong>Kagayaki 509</strong> (All-Seats Reserved) departing at 10:22 AM. 
-            <ol>
-              <li><span class="step-tag">STEP 1</span> Arrive at Tokyo Station by 09:40 AM.</li>
-              <li><span class="step-tag">STEP 2</span> Visit the massive "Ekibenya Matsuri" shop on the central concourse to buy your lunch boxes.</li>
-              <li><span class="step-tag">STEP 3</span> Store large bags in the reserved oversized baggage area behind the last row of seats.</li>
-            </ol>
-          </div>
-        </details>
-      </div>
-
-      <div class="segment-card">
-        <div class="segment-title">
-          <span>🚆 Kagayaki 509 to Kanazawa</span>
-          <span>2.5 hours</span>
-        </div>
-        <div class="segment-desc">Eat your bento as you cross through the Japanese Alps. Arrives at Kanazawa Station at exactly 12:49 PM.</div>
-      </div>
-
-      <div class="card">
-        <div class="card-top">
-          <span class="time-badge">13:30</span>
-          <a href="https://www.google.com/maps/search/?api=1&query=HOTEL+AMANEK+Kanazawa" target="_blank" class="spot-title">Check-in @ HOTEL AMANEK Kanazawa</a>
-        </div>
-        <details>
-          <summary>Hotel Drop</summary>
-          <div class="guide-body">
-            Take a 10-minute taxi from Kanazawa Station to the hotel in Katamachi. Drop your bags, freshen up, and head back out to explore the historic eastern side of the city.
-          </div>
-        </details>
-      </div>
-
-      <div class="card">
-        <div class="card-top">
-          <span class="time-badge">15:30</span>
-          <a href="https://www.google.com/maps/search/?api=1&query=Higashi+Chaya+District" target="_blank" class="spot-title">Wooden Architecture @ Higashi Chaya</a>
-        </div>
-        <details>
-          <summary>Exploration & Shima Teahouse</summary>
-          <div class="guide-body">
-            The largest preserved geisha district in Kanazawa. Because you are arriving in the late afternoon, the daytime tour bus crowds will be thinning out.
-            <ol>
-              <li><span class="step-tag">STEP 1</span> <strong>Shima Teahouse:</strong> Pay the small entry fee to explore this flawless 1820 geisha house, a designated National Important Cultural Property.</li>
-              <li><span class="step-tag">STEP 2</span> <strong>Gold Leaf:</strong> Kanazawa produces 99% of Japan's gold leaf. Pick up some artisan crafts or try gold-leaf soft serve ice cream.</li>
-            </ol>
-          </div>
-        </details>
-      </div>
-
-      <div class="card">
-        <div class="card-top">
-          <span class="time-badge">17:30</span>
-          <a href="https://www.google.com/maps/search/?api=1&query=Kazuemachi+Chaya+District" target="_blank" class="spot-title">Twilight Walk @ Kazue-machi Chaya</a>
-        </div>
-        <details>
-          <summary>Atmospheric Stroll</summary>
-          <div class="guide-body">
-            Walk across the Asano River just as the sun sets. This smaller, intimate geisha district runs right along the water. It is lit by traditional lanterns in the evening and is deeply cinematic.
-          </div>
-        </details>
-      </div>
-
-      <div class="card">
-        <div class="card-top">
-          <span class="time-badge">19:00</span>
-          <a href="https://www.google.com/maps/search/?api=1&query=Izakaya+Fuwari+Kanazawa" target="_blank" class="spot-title">Charcoal Izakaya Dinner @ Fuwari</a>
-        </div>
-        <details>
-          <summary>Dining Notes</summary>
-          <div class="guide-body">
-            Housed in a restored, atmospheric wooden townhouse (machiya) with an open kitchen. Famous for charcoal-grilled local seafood and exceptional hospitality. (Reservations highly recommended).
-          </div>
-        </details>
-      </div>
-    </div>
-
-    <!-- Oct 19 -->
-    <div id="oct19" class="day-section" style="display:none;">
-      <div class="day-header">
-        <span>Monday, Oct 19: Sunrise Gardens, Art & Samurai Lanes</span>
-      </div>
-
-      <div class="prep-box">
-        <div class="prep-title">📋 Day Preparation Notes</div>
-        Wake up early! Arriving at Kenroku-en at 7:00 AM guarantees you experience one of Japan's finest landscapes in total peace before the crowds arrive.
-      </div>
-
-      <div class="card">
-        <div class="card-top">
-          <span class="time-badge">07:00</span>
-          <a href="https://www.google.com/maps/search/?api=1&query=Kenroku-en+Garden" target="_blank" class="spot-title">Morning Serenity @ Kenroku-en Garden</a>
-        </div>
-        <details>
-          <summary>Garden Walk</summary>
-          <div class="guide-body">
-            One of the "Three Great Gardens of Japan." Wander past the Kotojitoro stone lantern, the reflection ponds, and the oldest fountain in Japan in pristine morning silence.
-          </div>
-        </details>
-      </div>
-
-      <div class="card">
-        <div class="card-top">
-          <span class="time-badge">08:30</span>
-          <a href="https://www.google.com/maps/search/?api=1&query=Gyokusen'inmaru+Garden" target="_blank" class="spot-title">Tea Ceremony @ Gyokusen'inmaru Garden</a>
-        </div>
-        <details>
-          <summary>Matcha & Rest</summary>
-          <div class="guide-body">
-            Located right next to Kanazawa Castle. Enter the modern Gyokusen-an rest house, sit on the tatami, and drink traditional whisked matcha while looking out over the terraced stone garden.
-          </div>
-        </details>
-      </div>
-
-      <div class="card">
-        <div class="card-top">
-          <span class="time-badge">10:30</span>
-          <a href="https://www.google.com/maps/search/?api=1&query=21st+Century+Museum+of+Contemporary+Art+Kanazawa" target="_blank" class="spot-title">SANAA Architecture @ 21st Century Museum</a>
-        </div>
-        <details>
-          <summary>Art Exploration</summary>
-          <div class="guide-body">
-            Walk through the striking circular glass structure. Be sure to visit Leandro Erlich’s famous "Swimming Pool" installation.
-          </div>
-        </details>
-      </div>
-
-      <div class="segment-card">
-        <div class="segment-title">
-          <span>🚶 Walk to Omicho Market</span>
-          <span>15 mins walk</span>
-        </div>
-        <div class="segment-desc">Walk north through the city center towards the famous food market for a massive seafood lunch.</div>
-      </div>
-
-      <div class="card">
-        <div class="card-top">
-          <span class="time-badge">12:30</span>
-          <a href="https://www.google.com/maps/search/?api=1&query=Omicho+Market" target="_blank" class="spot-title">Sea of Japan Sushi @ Omicho Market</a>
-        </div>
-        <details>
-          <summary>Food Hall Notes</summary>
-          <div class="guide-body">
-            Kanazawa's 300-year-old kitchen. The seafood pulled from the Sea of Japan here is legendary.
-            <ul>
-              <li><strong>The Order:</strong> Get in line for a *kaisendon* (a massive bowl of rice topped with thick cuts of fresh yellowtail, sweet shrimp, snow crab, and edible gold leaf).</li>
-            </ul>
-          </div>
-        </details>
-      </div>
-
-      <div class="card">
-        <div class="card-top">
-          <span class="time-badge">15:00</span>
-          <a href="https://www.google.com/maps/dir/?api=1&origin=Nagamachi+Yuzen-kan,+Kanazawa&destination=Yanagiya+Saraku,+Kanazawa&waypoints=Takada+Family+House,+Kanazawa%7CKanazawa+City+Ashigaru+Museum%7CNomura-ke+Samurai+Residence%7CKanazawa+Shinise+Memorial+Hall%7CKaburaki,+Kanazawa&travelmode=walking" target="_blank" class="spot-title">Walk in Samurai Footsteps (Nagamachi)</a>
-        </div>
-        <a href="https://www.google.com/maps/dir/?api=1&origin=Nagamachi+Yuzen-kan,+Kanazawa&destination=Yanagiya+Saraku,+Kanazawa&waypoints=Takada+Family+House,+Kanazawa%7CKanazawa+City+Ashigaru+Museum%7CNomura-ke+Samurai+Residence%7CKanazawa+Shinise+Memorial+Hall%7CKaburaki,+Kanazawa&travelmode=walking" target="_blank" class="map-btn">🗺️ Launch Nagamachi Samurai Walk GPS</a>
-        <details>
-          <summary>7-Stop Self-Guided Route Notes</summary>
-          <div class="guide-body">
-            Walk along the Ōnoshō Canal, admiring the earthen walls where samurai once lived. Click the GPS button above to follow the exact Lonely Planet walking loop[cite: 1]!
-            <ol>
-              <li><span class="step-tag">STOP 1</span> <strong>Nagamachi Yuzen-kan:</strong> Kaga silk dyeing center[cite: 1].</li>
-              <li><span class="step-tag">STOP 2</span> <strong>Takada Family House:</strong> Restored gatekeepers' quarters[cite: 1].</li>
-              <li><span class="step-tag">STOP 3</span> <strong>Ashigaru Museum:</strong> Lower-class samurai dwellings[cite: 1].</li>
-              <li><span class="step-tag">STOP 4</span> <strong>Nomura-ke Residence:</strong> Wealthy samurai home with immaculate tatami rooms and famous inner gardens[cite: 1].</li>
-              <li><span class="step-tag">STOP 5</span> <strong>Kanazawa Shinise & Maeda Museums:</strong> Samurai armor and historical displays[cite: 1].</li>
-              <li><span class="step-tag">STOP 6</span> <strong>Kaburaki:</strong> Traditional Kutani pottery shop[cite: 1].</li>
-              <li><span class="step-tag">STOP 7</span> <strong>Yanagiya Saraku:</strong> Soba dishes and house-brewed beer with garden views[cite: 1].</li>
-            </ol>
-          </div>
-        </details>
-      </div>
-
-      <div class="card">
-        <div class="card-top">
-          <span class="time-badge">19:00</span>
-          <a href="https://www.google.com/maps/search/?api=1&query=Itaru+Honten+Kanazawa" target="_blank" class="spot-title">Legendary Izakaya Dinner @ Itaru Honten</a>
-        </div>
-        <details>
-          <summary>Dining Notes</summary>
-          <div class="guide-body">
-            Located conveniently near your hotel. This high-energy, classic izakaya is famous for its thick cuts of sashimi and specifically *Nodoguro* (blackthroat seaperch), Kanazawa's incredibly fatty and prized local fish. (Go early to queue if you don't have a reservation).
-          </div>
-        </details>
-      </div>
-    </div>
-
-    <!-- Oct 20 -->
-    <div id="oct20" class="day-section" style="display:none;">
-      <div class="day-header">
-        <span>Tuesday, Oct 20: Into the Gorge (Yamanaka Onsen)</span>
-      </div>
-
-      <div class="prep-box">
-        <div class="prep-title">📋 Day Preparation Notes</div>
-        Ryokan day! <strong>Leave your large suitcases at Hotel Amanek's front desk.</strong> Pack only a small overnight bag with your essentials for the next two nights to travel weightlessly into the mountains.
-      </div>
-
-      <div class="segment-card">
-        <div class="segment-title">
-          <span>🚆 Train to Kaga Onsen Station</span>
-          <span>~20 mins ride</span>
-        </div>
-        <div class="segment-desc">Take the limited express Thunderbird or Shirasagi train from Kanazawa Station directly to Kaga Onsen Station.</div>
-      </div>
-
-      <div class="card">
-        <div class="card-top">
-          <span class="time-badge">13:30</span>
-          <a href="https://www.google.com/maps/search/?api=1&query=Shirasagiyu+Tawaraya" target="_blank" class="spot-title">Check-in @ Shirasagiyu Tawaraya</a>
-        </div>
-        <details>
-          <summary>Arrival & Ryokan Etiquette</summary>
-          <div class="guide-body">
-            Take the hotel shuttle (or a quick taxi) from the station deep into Yamanaka Onsen. 
-            <ul>
-              <li><strong>The Vibe:</strong> Founded 800 years ago, this ryokan sits directly on the Kakusenkei Gorge. </li>
-              <li><strong>The Protocol:</strong> Take off your shoes at the entrance, put on your provided yukata (cotton robe), and leave your worldly stress at the door.</li>
-            </ul>
-          </div>
-        </details>
-      </div>
-
-      <div class="card">
-        <div class="card-top">
-          <span class="time-badge">15:00</span>
-          <a href="#" class="spot-title">Rotenburo Soak & River Views</a>
-        </div>
-        <details>
-          <summary>Onsen Notes</summary>
-          <div class="guide-body">
-            Spend the afternoon soaking in the open-air baths (rotenburo). The natural hot spring water flows continuously while you look directly out over the rushing river and autumn trees.
-          </div>
-        </details>
-      </div>
-
-      <div class="card">
-        <div class="card-top">
-          <span class="time-badge">18:30</span>
-          <a href="#" class="spot-title">Kaiseki Dinner (At Ryokan)</a>
-        </div>
-        <details>
-          <summary>Dining Notes</summary>
-          <div class="guide-body">
-            Experience traditional *kaiseki-ryori*—a multi-course dinner of hyper-seasonal, beautifully plated local ingredients, usually featuring local Kaga vegetables and fresh seafood.
-          </div>
-        </details>
-      </div>
-    </div>
-
-    <!-- Oct 21 -->
-    <div id="oct21" class="day-section" style="display:none;">
-      <div class="day-header">
-        <span>Wednesday, Oct 21: The Zero-Transit Gorge Retreat</span>
-      </div>
-
-      <div class="prep-box">
-        <div class="prep-title">📋 Day Preparation Notes</div>
-        You have absolutely no transit today. This is your pure "middle day" reward. While the one-night guests rush to check out, you get the baths and the village entirely to yourself.
-      </div>
-
-      <div class="card">
-        <div class="card-top">
-          <span class="time-badge">08:30</span>
-          <a href="#" class="spot-title">Traditional Ryokan Breakfast</a>
-        </div>
-        <details>
-          <summary>Breakfast Notes</summary>
-          <div class="guide-body">
-            A massive, savory spread featuring grilled fish, tamagoyaki (rolled omelet), miso soup, pickled vegetables, and rice.
-          </div>
-        </details>
-      </div>
-
-      <div class="card">
-        <div class="card-top">
-          <span class="time-badge">10:30</span>
-          <a href="https://www.google.com/maps/search/?api=1&query=Kakusenkei+Gorge" target="_blank" class="spot-title">Mossy Paths @ Kakusenkei Gorge</a>
-        </div>
-        <details>
-          <summary>Nature Walk</summary>
-          <div class="guide-body">
-            Walk the 1.3-kilometer riverside trail winding through the gorge. The air is incredibly fresh, surrounded by moss, rock formations, and dense forest.
-          </div>
-        </details>
-      </div>
-
-      <div class="card">
-        <div class="card-top">
-          <span class="time-badge">11:30</span>
-          <a href="https://www.google.com/maps/search/?api=1&query=Ayatori+Bridge+Yamanaka" target="_blank" class="spot-title">S-Curve Architecture @ Ayatori Bridge</a>
-        </div>
-        <details>
-          <summary>Design & Tea</summary>
-          <div class="guide-body">
-            Cross this strikingly modern, purple S-shaped steel bridge designed by Hiroshi Teshigahara, contrasting beautifully against the ancient forest. If the riverbed kawadoko (tea pavilions) are open below, stop for a matcha and sweet.
-          </div>
-        </details>
-      </div>
-
-      <div class="card">
-        <div class="card-top">
-          <span class="time-badge">13:00</span>
-          <a href="https://www.google.com/maps/search/?api=1&query=Yuge-dori+Yamanaka" target="_blank" class="spot-title">Casual Lunch & Craft Shopping @ Yuge-dori</a>
-        </div>
-        <details>
-          <summary>Town Stroll</summary>
-          <div class="guide-body">
-            Walk down the main village street. 
-            <ul>
-              <li><strong>Shopping:</strong> Yamanaka is famous for wood-turning lacquerware. Browse the small artisan studios for stunning wooden bowls.</li>
-              <li><strong>Lunch:</strong> Grab a simple, hearty bowl of hot soba or freshly fried croquettes from a local shop front.</li>
-            </ul>
-          </div>
-        </details>
-      </div>
-
-      <div class="card">
-        <div class="card-top">
-          <span class="time-badge">15:00</span>
-          <a href="#" class="spot-title">Afternoon Soak & Ryokan Relax</a>
-        </div>
-        <details>
-          <summary>Rest</summary>
-          <div class="guide-body">
-            Return to Tawaraya, put your yukata back on, and take advantage of the empty baths before the new afternoon guests arrive. Followed by your second kaiseki dinner at 18:30.
-          </div>
-        </details>
-      </div>
-    </div>
-
-    <!-- Oct 22 -->
-    <div id="oct22" class="day-section" style="display:none;">
-      <div class="day-header">
-        <span>Thursday, Oct 22: Zen Return to Kanazawa</span>
-      </div>
-
-      <div class="prep-box">
-        <div class="prep-title">📋 Day Preparation Notes</div>
-        A slow, unhurried transition back to the city. No highway buses or rushed day trips—just a peaceful return to your hotel and a relaxed afternoon of modern Zen art.
-      </div>
-
-      <div class="card">
-        <div class="card-top">
-          <span class="time-badge">10:00</span>
-          <a href="#" class="spot-title">Check-out & Return Transit</a>
-        </div>
-        <details>
-          <summary>Logistics</summary>
-          <div class="guide-body">
-            Take the shuttle back to Kaga Onsen Station, board the limited express train, and arrive back in Kanazawa before Noon.
-          </div>
-        </details>
-      </div>
-
-      <div class="card">
-        <div class="card-top">
-          <span class="time-badge">12:30</span>
-          <a href="https://www.google.com/maps/search/?api=1&query=HOTEL+AMANEK+Kanazawa" target="_blank" class="spot-title">Check-in @ HOTEL AMANEK Kanazawa</a>
-        </div>
-        <details>
-          <summary>Reunion</summary>
-          <div class="guide-body">
-            Check back into Amanek, reunite with your large suitcases held at the front desk, and drop your bags in your new room.
-          </div>
-        </details>
-      </div>
-
-      <div class="card">
-        <div class="card-top">
-          <span class="time-badge">14:00</span>
-          <a href="https://www.google.com/maps/search/?api=1&query=D.T.+Suzuki+Museum" target="_blank" class="spot-title">Minimalist Philosophy @ D.T. Suzuki Museum</a>
-        </div>
-        <details>
-          <summary>Architecture & Silence</summary>
-          <div class="guide-body">
-            Walk over to this stunning architectural space dedicated to the philosopher who brought Zen Buddhism to the West. Spend time sitting quietly at the "Water Mirror Bowl," a massive, dark reflection pool designed for pure contemplation.
-          </div>
-        </details>
-      </div>
-
-      <div class="card">
-        <div class="card-top">
-          <span class="time-badge">16:00</span>
-          <a href="https://www.google.com/maps/dir/?api=1&origin=Nagamachi+Yuzen-kan,+Kanazawa&destination=Yanagiya+Saraku,+Kanazawa&waypoints=Takada+Family+House,+Kanazawa%7CKanazawa+City+Ashigaru+Museum%7CNomura-ke+Samurai+Residence%7CKanazawa+Shinise+Memorial+Hall%7CKaburaki,+Kanazawa&travelmode=walking" target="_blank" class="spot-title">Kutani Pottery & Nagamachi Stroll</a>
-        </div>
-        <a href="https://www.google.com/maps/dir/?api=1&origin=Nagamachi+Yuzen-kan,+Kanazawa&destination=Yanagiya+Saraku,+Kanazawa&waypoints=Takada+Family+House,+Kanazawa%7CKanazawa+City+Ashigaru+Museum%7CNomura-ke+Samurai+Residence%7CKanazawa+Shinise+Memorial+Hall%7CKaburaki,+Kanazawa&travelmode=walking" target="_blank" class="map-btn">🗺️ Launch Nagamachi Samurai Walk GPS</a>
-        <details>
-          <summary>Afternoon Pottery Stroll Notes</summary>
-          <div class="guide-body">
-            Return to the earthen walls of the samurai district. Browse the artisan shops (like Kaburaki at Stop 6) for traditional Kutani pottery—highly detailed, vibrantly painted porcelain unique to Ishikawa Prefecture[cite: 1].
-          </div>
-        </details>
-      </div>
-
-      <div class="card">
-        <div class="card-top">
-          <span class="time-badge">19:00</span>
-          <a href="https://www.google.com/maps/search/?api=1&query=Oriental+Brewing+Kanazawa" target="_blank" class="spot-title">Casual Final Dinner @ Oriental Brewing</a>
-        </div>
-        <details>
-          <summary>Food & Drink</summary>
-          <div class="guide-body">
-            After multi-course kaiseki meals and high-end izakayas, enjoy a relaxed final night with local Kanazawa craft beer and wood-fired pizzas or casual pub food before heading to Kyoto the next morning!
-          </div>
-        </details>
-      </div>
-    </div>
-
-  </div>
-
-  <script>
-    function showDay(dayId) {
-      const sections = document.querySelectorAll('.day-section');
-      sections.forEach(sec => sec.style.display = 'none');
-
-      const buttons = document.querySelectorAll('.date-btn');
-      buttons.forEach(btn => btn.classList.remove('active'));
-
-      const selected = document.getElementById(dayId);
-      if (selected) selected.style.display = 'block';
-
-      event.target.classList.add('active');
-    }
-
-    function filterSchedule() {
-      const input = document.getElementById('searchInput').value.toLowerCase();
-      const cards = document.querySelectorAll('.card, .segment-card, .prep-box');
-
-      cards.forEach(card => {
-        const text = card.innerText.toLowerCase();
-        card.style.display = text.includes(input) ? 'block' : 'none';
-      });
-
-      if (input.length > 0) {
-        const sections = document.querySelectorAll('.day-section');
-        sections.forEach(sec => sec.style.display = 'block');
-      }
-    }
-  </script>
 </body>
 </html>
