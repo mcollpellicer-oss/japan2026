@@ -9,7 +9,7 @@
             --primary-bg: #f9f9f7;
             --card-bg: #ffffff;
             --text-main: #2c3e50;
-            --accent: #2b6cb0; /* Tokyo blue accent */
+            --accent: #2b6cb0;
             --accent-dark: #1a365d;
             --border: #e2e8f0;
             --subtle-bg: #f8fafc;
@@ -91,16 +91,8 @@
             text-align: center;
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
-        .header-card h1 {
-            margin: 0 0 8px 0;
-            font-size: 28px;
-            letter-spacing: 1px;
-        }
-        .header-card p {
-            margin: 0;
-            color: #e2e8f0;
-            font-size: 15px;
-        }
+        .header-card h1 { margin: 0 0 8px 0; font-size: 28px; letter-spacing: 1px; }
+        .header-card p { margin: 0; color: #e2e8f0; font-size: 15px; }
         .hotel-base {
             background-color: rgba(255, 255, 255, 0.1);
             border: 1px solid rgba(255, 255, 255, 0.2);
@@ -128,12 +120,7 @@
             padding-bottom: 10px;
             margin-bottom: 18px;
         }
-        .day-title {
-            font-size: 22px;
-            font-weight: 700;
-            color: var(--accent);
-            margin: 0;
-        }
+        .day-title { font-size: 22px; font-weight: 700; color: var(--accent); margin: 0; }
         .day-date {
             font-size: 14px;
             font-weight: 600;
@@ -151,15 +138,8 @@
             margin-bottom: 20px;
             font-size: 14px;
         }
-        .top-tips strong {
-            color: #2b6cb0;
-            display: block;
-            margin-bottom: 6px;
-            font-size: 15px;
-        }
-        .time-block {
-            margin-bottom: 20px;
-        }
+        .top-tips strong { color: #2b6cb0; display: block; margin-bottom: 6px; font-size: 15px; }
+        .time-block { margin-bottom: 20px; }
         .time-block h3 {
             font-size: 16px;
             color: #1a202c;
@@ -175,6 +155,15 @@
             border-radius: 4px;
             font-size: 12px;
             font-weight: 600;
+        }
+        .spot-link {
+            color: var(--text-main);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .spot-link:hover {
+            color: var(--accent);
+            text-decoration: underline;
         }
         .map-btn {
             display: inline-flex;
@@ -192,9 +181,7 @@
             font-size: 14px;
             transition: background-color 0.2s;
         }
-        .map-btn:hover {
-            background-color: #1a202c;
-        }
+        .map-btn:hover { background-color: #1a202c; }
         .meals-box {
             background-color: var(--subtle-bg);
             border: 1px solid var(--border);
@@ -203,20 +190,9 @@
             margin-top: 20px;
             font-size: 14px;
         }
-        .meals-box h4 {
-            margin: 0 0 10px 0;
-            color: #2d3748;
-            font-size: 15px;
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 6px;
-        }
-        .meals-box ul {
-            margin: 0;
-            padding-left: 18px;
-        }
-        .meals-box li {
-            margin-bottom: 6px;
-        }
+        .meals-box h4 { margin: 0 0 10px 0; color: #2d3748; font-size: 15px; border-bottom: 1px solid var(--border); padding-bottom: 6px; }
+        .meals-box ul { margin: 0; padding-left: 18px; }
+        .meals-box li { margin-bottom: 6px; }
         .backup-tag {
             display: inline-block;
             font-size: 11px;
@@ -252,25 +228,14 @@
             padding: 10px 14px;
             margin: 12px 0;
         }
-        summary {
-            font-weight: 600;
-            cursor: pointer;
-            color: var(--accent);
-            font-size: 14px;
-        }
-        details p {
-            font-size: 13.5px;
-            margin: 10px 0 4px 0;
-            color: #4a5568;
-            line-height: 1.5;
-        }
+        summary { font-weight: 600; cursor: pointer; color: var(--accent); font-size: 14px; }
+        details p { font-size: 13.5px; margin: 10px 0 4px 0; color: #4a5568; line-height: 1.5; }
         details ul, details ol { padding-left: 18px; margin-top: 6px; font-size: 13.5px; color: #4a5568; }
         details li { margin-bottom: 6px; }
     </style>
 </head>
 <body>
 
-    <!-- Main Navigation Bar -->
     <nav>
         <a href="index.html" class="active">TOKYO</a>
         <a href="regional.html">KANAZAWA</a>
@@ -278,7 +243,6 @@
         <a href="osaka.html">OSAKA & KOYASAN</a>
     </nav>
 
-    <!-- Day Sub-Navigation Jump Bar -->
     <div class="day-nav">
         <a href="#oct14">OCT 14</a>
         <a href="#oct15">OCT 15</a>
@@ -293,7 +257,6 @@
 
     <div class="container">
         
-        <!-- Header & Base Setup -->
         <div class="header-card">
             <h1>Tokyo Master Itinerary</h1>
             <p>Phase 1 (Arrival) & Phase 5 (Grand Finale)</p>
@@ -318,7 +281,7 @@
             </div>
 
             <div class="time-block">
-                <h3><span class="time-badge">14:00</span> Landing @ Narita Airport (NRT)</h3>
+                <h3><span class="time-badge">14:00</span> <a href="https://www.google.com/maps/search/?api=1&query=Narita+Airport+Terminal+1" target="_blank" class="spot-link">Landing @ Narita Airport (NRT)</a></h3>
                 <p>Flight CA929 lands at Terminal 1 at 14:00.</p>
             </div>
             
@@ -336,7 +299,7 @@
             </div>
 
             <div class="time-block">
-                <h3><span class="time-badge">17:00</span> Check-in @ STARRY STAY RESIDENCE EBISU</h3>
+                <h3><span class="time-badge">17:00</span> <a href="https://www.google.com/maps/search/?api=1&query=STARRY+STAY+RESIDENCE+EBISU" target="_blank" class="spot-link">Check-in @ STARRY STAY RESIDENCE EBISU</a></h3>
                 <p>Unpack and settle into your West Tokyo home base. Ebisu is a sophisticated, residential hub favored by Tokyo locals for high-end craft izakayas, third-wave coffee, and quiet, clean side streets without the chaos of Shinjuku.</p>
             </div>
 
@@ -347,10 +310,10 @@
             <div class="meals-box">
                 <h4>🍽️ Day 1 Meal & Beverage Plan</h4>
                 <ul>
-                    <li><strong>Dinner:</strong> <em>Ebisu no Yasube (19:00).</em> Kochi-style thin-skin crispy gyoza. Order Yaki-gyoza (pan-fried) and su-gyoza (boiled in soup) with cold draft beer.</li>
+                    <li><strong>Dinner:</strong> <a href="https://www.google.com/maps/search/?api=1&query=Ebisu+no+Yasube" target="_blank" class="spot-link"><em>Ebisu no Yasube</em></a> <em>(19:00).</em> Kochi-style thin-skin crispy gyoza. Order Yaki-gyoza (pan-fried) and su-gyoza (boiled in soup) with cold draft beer.</li>
                     <li><span class="backup-tag">BACKUP 1</span> <em>Ebisu Yokocho:</em> A lively indoor alley packed with 20 distinct street-food stalls serving yakitori and oden.</li>
                     <li><span class="backup-tag">BACKUP 2</span> <em>Afuri Ebisu:</em> Famous for light Yuzu Shio (citrus-salt) ramen topped with charcoal-grilled chashu pork.</li>
-                    <li><strong>Nightcap:</strong> <em>Janai Coffee (21:00).</em> A hidden speakeasy disguised as a coffee shop. <strong>Secret Entry:</strong> Open janaicoffee.tokyo on your phone, trace the gesture pattern on the screen, and present the passkey to the barista.</li>
+                    <li><strong>Nightcap:</strong> <a href="https://www.google.com/maps/search/?api=1&query=Janai+Coffee+Ebisu" target="_blank" class="spot-link"><em>Janai Coffee</em></a> <em>(21:00).</em> A hidden speakeasy disguised as a coffee shop. <strong>Secret Entry:</strong> Open janaicoffee.tokyo on your phone, trace the gesture pattern on the screen, and present the passkey to the barista.</li>
                     <li><span class="backup-tag">BACKUP</span> <em>Bar Tram:</em> Speakeasy cocktail lounge specializing in herbal absinthe drips.</li>
                 </ul>
             </div>
@@ -369,7 +332,7 @@
             </div>
 
             <div class="time-block">
-                <h3><span class="time-badge">08:30</span> Morning Coffee @ ONIBUS Coffee Nakameguro</h3>
+                <h3><span class="time-badge">08:30</span> <a href="https://www.google.com/maps/search/?api=1&query=Onibus+Coffee+Nakameguro" target="_blank" class="spot-link">Morning Coffee @ ONIBUS Nakameguro</a></h3>
                 <p>One of Tokyo's pioneering third-wave roasteries housed in a tiny wooden building tucked directly beside the Tokyu Toyoko train tracks. Grab pastries from nearby <strong>I'm Donut? Nakameguro</strong> before sitting.</p>
             </div>
 
@@ -378,7 +341,7 @@
             </div>
 
             <div class="time-block">
-                <h3><span class="time-badge">10:00</span> Architecture & Books @ Daikanyama T-Site</h3>
+                <h3><span class="time-badge">10:00</span> <a href="https://www.google.com/maps/search/?api=1&query=Daikanyama+T-Site" target="_blank" class="spot-link">Architecture & Books @ Daikanyama T-Site</a></h3>
                 <p>Designed by Klein Dytham Architecture, this modern complex features three pavilion buildings connected by a canopy path.</p>
             </div>
 
@@ -387,7 +350,7 @@
             </div>
 
             <div class="time-block">
-                <h3><span class="time-badge">13:00</span> Digital Art @ teamLab Borderless (Azabudai Hills)</h3>
+                <h3><span class="time-badge">13:00</span> <a href="https://www.google.com/maps/search/?api=1&query=teamLab+Borderless+Azabudai+Hills" target="_blank" class="spot-link">Digital Art @ teamLab Borderless</a></h3>
                 <p>Integrated into Thomas Heatherwick's undulating Azabudai Hills urban plaza.</p>
             </div>
             
@@ -405,12 +368,12 @@
             </div>
 
             <div class="time-block">
-                <h3><span class="time-badge">17:15</span> Shibuya Scramble & Hachikō Statue</h3>
+                <h3><span class="time-badge">17:15</span> <a href="https://www.google.com/maps/search/?api=1&query=Shibuya+Scramble+Crossing" target="_blank" class="spot-link">Shibuya Scramble & Hachikō Statue</a></h3>
                 <p>Arrive exactly as the sun sets and the massive digital billboards light up the crossing. Pay respects to the Hachikō Statue, then cross the main intersection diagonally.</p>
             </div>
 
             <div class="time-block">
-                <h3><span class="time-badge">18:00</span> Drinks & Neon Alleys @ Nonbei Yokocho</h3>
+                <h3><span class="time-badge">18:00</span> <a href="https://www.google.com/maps/search/?api=1&query=Nonbei+Yokocho+Shibuya" target="_blank" class="spot-link">Drinks & Neon Alleys @ Nonbei Yokocho</a></h3>
                 <p>Contrast Shibuya's hyper-modern neon with its preserved post-war food alleys. Tucked beside the JR tracks, "Drunkard's Alley" features tiny 5-seat bars. Grab a quick yakitori skewer and a drink here!</p>
             </div>
 
@@ -419,10 +382,10 @@
                 <ul>
                     <li><strong>Lunch (11:30):</strong> Garden patio dining at <em>IVY Place</em> inside T-Site.</li>
                     <li><span class="backup-tag">BACKUP LUNCH</span> <em>Spring Valley Brewery:</em> Craft beer tasting flights and wood-fired sourdough pizzas.</li>
-                    <li><strong>Afternoon Coffee (16:00):</strong> Kyoto-style Spanish lattes at <em>% Arabica Azabudai Hills</em>.</li>
-                    <li><strong>Dinner:</strong> <em>Ebisu Yamaimo Sakai (19:30).</em> Specializes in mountain yam dishes, teppanyaki, and seasonal izakaya plates.</li>
+                    <li><strong>Afternoon Coffee (16:00):</strong> Kyoto-style Spanish lattes at <a href="https://www.google.com/maps/search/?api=1&query=Arabica+Coffee+Azabudai+Hills" target="_blank" class="spot-link"><em>% Arabica Azabudai Hills</em></a>.</li>
+                    <li><strong>Dinner:</strong> <a href="https://www.google.com/maps/search/?api=1&query=Ebisu+Yamaimo+Sakai" target="_blank" class="spot-link"><em>Ebisu Yamaimo Sakai</em></a> <em>(19:30).</em> Specializes in mountain yam dishes, teppanyaki, and seasonal izakaya plates.</li>
                     <li><span class="backup-tag">BACKUP DINNER</span> <em>Toriyoshi Ebisu:</em> High-end yakitori grilled over Kishu Binchotan charcoal.</li>
-                    <li><strong>Nightcap:</strong> <em>Bar Trench (21:00).</em> Ranked among Asia's 50 Best Bars.</li>
+                    <li><strong>Nightcap:</strong> <a href="https://www.google.com/maps/search/?api=1&query=Bar+Trench+Ebisu" target="_blank" class="spot-link"><em>Bar Trench</em></a> <em>(21:00).</em> Ranked among Asia's 50 Best Bars.</li>
                     <li><span class="backup-tag">BACKUP</span> <em>BAR MARTHA:</em> Tokyo’s premier high-fidelity vinyl audio sanctuary just a few blocks away.</li>
                 </ul>
             </div>
@@ -445,7 +408,7 @@
             </div>
 
             <div class="time-block">
-                <h3><span class="time-badge">08:15</span> Bamboo Forest & Matcha @ Hokokuji Temple</h3>
+                <h3><span class="time-badge">08:15</span> <a href="https://www.google.com/maps/search/?api=1&query=Hokokuji+Temple+Kamakura" target="_blank" class="spot-link">Bamboo Forest & Matcha @ Hokokuji Temple</a></h3>
                 <p>Enter past the moss garden towards the main Zen hall. Sip freshly whisked ceremonial matcha at the Kyokutai-an Tea House inside 2,000 towering bamboo stalks.</p>
             </div>
 
@@ -454,12 +417,12 @@
             </div>
 
             <div class="time-block">
-                <h3><span class="time-badge">13:30</span> Great Buddha (Daibutsu) @ Kotoku-in</h3>
+                <h3><span class="time-badge">13:30</span> <a href="https://www.google.com/maps/search/?api=1&query=Kotoku-in+Great+Buddha+Kamakura" target="_blank" class="spot-link">Great Buddha (Daibutsu) @ Kotoku-in</a></h3>
                 <p>The iconic 13.35-meter open-air bronze Great Buddha statue, cast in 1252.</p>
             </div>
 
             <div class="time-block">
-                <h3><span class="time-badge">14:30</span> Coastal Views @ Hase-dera Temple</h3>
+                <h3><span class="time-badge">14:30</span> <a href="https://www.google.com/maps/search/?api=1&query=Hase-dera+Temple+Kamakura" target="_blank" class="spot-link">Coastal Views @ Hase-dera Temple</a></h3>
                 <p>View the gilded 11-headed wooden Kannon statue, then head to the Observation Terrace to enjoy sweeping views across Sagami Bay while having green tea ice cream.</p>
             </div>
 
@@ -468,14 +431,14 @@
             </div>
 
             <div class="time-block">
-                <h3><span class="time-badge">16:30</span> Enoshima Island & Sea Candle Sunset 🌇</h3>
+                <h3><span class="time-badge">16:30</span> <a href="https://www.google.com/maps/search/?api=1&query=Enoshima+Sea+Candle" target="_blank" class="spot-link">Enoshima Island & Sea Candle Sunset 🌇</a></h3>
                 <p>Walk across the pedestrian bridge to Enoshima Island. Walk up shrine steps to the Enoshima Sea Candle observation tower for sunset views over Sagami Bay (and Mt. Fuji).</p>
             </div>
 
             <div class="meals-box">
                 <h4>🍽️ Day 3 Meal & Beverage Plan</h4>
                 <ul>
-                    <li><strong>Lunch (12:00):</strong> <em>Matsubara-an.</em> Incredible handmade soba institution housed inside a restored early-20th-century Japanese coastal villa. Order fresh soba with crispy duck tempura.</li>
+                    <li><strong>Lunch (12:00):</strong> <a href="https://www.google.com/maps/search/?api=1&query=Matsubara-an+Kamakura" target="_blank" class="spot-link"><em>Matsubara-an.</em></a> Incredible handmade soba institution housed inside a restored early-20th-century Japanese coastal villa. Order fresh soba with crispy duck tempura.</li>
                     <li><span class="backup-tag">BACKUP LUNCH</span> <em>Kamakura Cinema Soba:</em> Historic casual buckwheat soba shop near Kamakura station.</li>
                     <li><strong>Dinner (18:30):</strong> <em>Tobiccho (Enoshima).</em> Eat fresh or boiled baby sardine rice bowls (Shirasu-don).</li>
                     <li><strong>Nightcap (20:30):</strong> Train back to Ebisu; vinyl nightcap at <em>A10 Bar</em> (hidden behind fake coin lockers).</li>
@@ -496,7 +459,7 @@
             </div>
 
             <div class="time-block">
-                <h3><span class="time-badge">08:00</span> Shinto Morning Ritual @ Meiji Jingu Shrine</h3>
+                <h3><span class="time-badge">08:00</span> <a href="https://www.google.com/maps/search/?api=1&query=Meiji+Jingu+Shrine" target="_blank" class="spot-link">Shinto Morning Ritual @ Meiji Jingu</a></h3>
                 <p>Arrive early before weekend crowds. Bow at the Harajuku Torii Gate, then observe the 08:00 AM morning Shinto ritual (Nikku-sai) conducted by priests in the main courtyard.</p>
             </div>
 
@@ -509,7 +472,7 @@
             </div>
 
             <div class="time-block">
-                <h3><span class="time-badge">13:00</span> Vinyl & Vintage @ Shimokitazawa</h3>
+                <h3><span class="time-badge">13:00</span> <a href="https://www.google.com/maps/search/?api=1&query=Shimokitazawa" target="_blank" class="spot-link">Vinyl & Vintage @ Shimokitazawa</a></h3>
                 <p>Tokyo’s bohemian heart. Spend two hours digging through used record stores (Flash Disc Ranch or Disk Union) and endless vintage clothing racks.</p>
             </div>
 
@@ -518,7 +481,7 @@
             </div>
 
             <div class="time-block">
-                <h3><span class="time-badge">15:15</span> The Cat Temple @ Gotokuji</h3>
+                <h3><span class="time-badge">15:15</span> <a href="https://www.google.com/maps/search/?api=1&query=Gotokuji+Temple" target="_blank" class="spot-link">The Cat Temple @ Gotokuji</a></h3>
                 <p>Walk 10 mins from the station to this quiet temple, the birthplace of the maneki-neko (beckoning cat). It is packed with thousands of white cat statues left for good luck.</p>
             </div>
 
@@ -527,22 +490,22 @@
             </div>
 
             <div class="time-block">
-                <h3><span class="time-badge">16:30</span> Golden Hour Sunset 🌇 @ Metro Building</h3>
+                <h3><span class="time-badge">16:30</span> <a href="https://www.google.com/maps/search/?api=1&query=Tokyo+Metropolitan+Government+Building" target="_blank" class="spot-link">Golden Hour Sunset 🌇 @ Metro Building</a></h3>
                 <p>Ride the high-speed elevator to the 45th-floor South Observatory of the Tokyo Metropolitan Government Building for free golden hour views across Tokyo's expanse.</p>
             </div>
 
             <div class="time-block">
-                <h3><span class="time-badge">17:45</span> Yakitori & Alleyways @ Omoide Yokocho</h3>
+                <h3><span class="time-badge">17:45</span> <a href="https://www.google.com/maps/search/?api=1&query=Omoide+Yokocho" target="_blank" class="spot-link">Yakitori & Alleyways @ Omoide Yokocho</a></h3>
                 <p>Preserved 1940s post-war alleyway network ("Memory Lane") packed with smoky counter-only yakitori stalls. Grab a charcoal-grilled chicken skewer and a draft beer.</p>
             </div>
 
             <div class="meals-box">
                 <h4>🍽️ Day 4 Meal & Beverage Plan</h4>
                 <ul>
-                    <li><strong>Coffee (09:15):</strong> <em>The Roastery by Nozy Coffee.</em> Single-origin espresso bar on Cat Street.</li>
-                    <li><strong>Lunch (11:30):</strong> <em>Maisen Aoyama.</em> Famous tonkatsu housed inside a renovated Showa-era public bathhouse.</li>
+                    <li><strong>Coffee (09:15):</strong> <a href="https://www.google.com/maps/search/?api=1&query=The+Roastery+by+Nozy+Coffee" target="_blank" class="spot-link"><em>The Roastery by Nozy Coffee.</em></a> Single-origin espresso bar on Cat Street.</li>
+                    <li><strong>Lunch (11:30):</strong> <a href="https://www.google.com/maps/search/?api=1&query=Maisen+Tonkatsu+Aoyama" target="_blank" class="spot-link"><em>Maisen Aoyama.</em></a> Famous tonkatsu housed inside a renovated Showa-era public bathhouse.</li>
                     <li><span class="backup-tag">BACKUP LUNCH</span> <em>Gyukatsu Motomura Harajuku:</em> Rare beef cutlets flash-fried and seared on individual stone grills.</li>
-                    <li><strong>Dinner (19:30):</strong> <em>Ramen Nagi Golden Gai.</em> Up a steep staircase in Golden Gai. Famous for intense broth made from 20 varieties of dried sardine (niboshi).</li>
+                    <li><strong>Dinner (19:30):</strong> <a href="https://www.google.com/maps/search/?api=1&query=Ramen+Nagi+Golden+Gai" target="_blank" class="spot-link"><em>Ramen Nagi Golden Gai.</em></a> Up a steep staircase in Golden Gai. Famous for intense broth made from 20 varieties of dried sardine (niboshi).</li>
                     <li><span class="backup-tag">BACKUP DINNER</span> <em>Tatsunoya Shinjuku:</em> Legendary pork-bone tonkotsu ramen with charred tsukemen dipping broth.</li>
                     <li><strong>Late Night Bar (21:00):</strong> Craft lemon sours surrounded by rare books at <em>Open Book</em> inside Golden Gai.</li>
                 </ul>
@@ -562,7 +525,7 @@
             </div>
 
             <div class="time-block">
-                <h3><span class="time-badge">15:30</span> SANAA Architecture @ Sumida Hokusai Museum</h3>
+                <h3><span class="time-badge">15:30</span> <a href="https://www.google.com/maps/search/?api=1&query=Sumida+Hokusai+Museum" target="_blank" class="spot-link">SANAA Architecture @ Sumida Hokusai Museum</a></h3>
                 <p>Striking angular mirrored-aluminum building designed by Pritzker Prize winner Kazuyo Sejima (SANAA). Houses the works of famous woodblock artist Katsushika Hokusai, creator of <em>The Great Wave off Kanagawa</em>.</p>
             </div>
 
@@ -571,19 +534,19 @@
             </div>
 
             <div class="time-block">
-                <h3><span class="time-badge">17:00</span> Sumida Riverwalk Sunset Spot 🌇</h3>
+                <h3><span class="time-badge">17:00</span> <a href="https://www.google.com/maps/search/?api=1&query=Sumida+Riverwalk" target="_blank" class="spot-link">Sumida Riverwalk Sunset Spot 🌇</a></h3>
                 <p>Stroll along the elevated Sumida Riverwalk footbridge as the sun sets behind Tokyo Skytree and the riverside skyline.</p>
             </div>
 
             <div class="time-block">
-                <h3><span class="time-badge">18:00</span> Historic "Electric Brandy" @ Kamiya Bar (1880)</h3>
+                <h3><span class="time-badge">18:00</span> <a href="https://www.google.com/maps/search/?api=1&query=Kamiya+Bar+Asakusa" target="_blank" class="spot-link">Historic "Electric Brandy" @ Kamiya Bar (1880)</a></h3>
                 <p>Japan's first Western-style bar, operating out of an official 1921 Taisho-era building. Order a standing glass of <em>Denki Bran</em> ("Electric Brandy"), a Meiji-era herbal spirit blend.</p>
             </div>
 
             <div class="meals-box">
                 <h4>🍽️ Day 15 Meal Plan</h4>
                 <ul>
-                    <li><strong>Dinner (19:30):</strong> <em>Hoppy Street.</em> A 1950s post-war drinking street lined with plastic-curtain izakayas. Famous for slow-simmered beef tendon stew (nikomi) and low-alcohol Hoppy mixed with shochu.</li>
+                    <li><strong>Dinner (19:30):</strong> <a href="https://www.google.com/maps/search/?api=1&query=Hoppy+Dori+Asakusa" target="_blank" class="spot-link"><em>Hoppy Street.</em></a> A 1950s post-war drinking street lined with plastic-curtain izakayas. Famous for slow-simmered beef tendon stew (nikomi) and low-alcohol Hoppy mixed with shochu.</li>
                     <li><span class="backup-tag">BACKUP 1</span> <em>Yakiniku Beast:</em> High-grade Wagyu beef yakiniku izakaya.</li>
                     <li><span class="backup-tag">BACKUP 2</span> <em>Asakusa Ichimon:</em> Historic Edo-style tuna hotpot (negi-ma nabe) inside a traditional merchant house.</li>
                 </ul>
@@ -603,7 +566,7 @@
             </div>
 
             <div class="time-block">
-                <h3><span class="time-badge">07:30</span> Silent Morning @ Sensō-ji Temple</h3>
+                <h3><span class="time-badge">07:30</span> <a href="https://www.google.com/maps/search/?api=1&query=Sensoji+Temple+Asakusa" target="_blank" class="spot-link">Silent Morning @ Sensō-ji Temple</a></h3>
                 <p>Tokyo's oldest temple (founded in 645 AD). Pass under the 700kg red paper lantern at Kaminarimon in perfect morning silence. Walk down the 250-meter stone approach line before shops open, bathe your hands in sacred smoke at the Jokoro burner, and draw an Omikuji fortune scroll.</p>
             </div>
 
@@ -612,7 +575,7 @@
             </div>
 
             <div class="time-block">
-                <h3><span class="time-badge">10:00</span> Hand-Forged Knives @ Kappabashi</h3>
+                <h3><span class="time-badge">10:00</span> <a href="https://www.google.com/maps/search/?api=1&query=Kama-Asa+Kappabashi" target="_blank" class="spot-link">Hand-Forged Knives @ Kappabashi</a></h3>
                 <p>The premier street in Tokyo for buying hand-forged Japanese chef knives. Visit <strong>Kama-Asa</strong> and <strong>Tsubaya</strong> for high-end blades with complimentary custom name-engraving. For ceramics, visit <strong>Dengama</strong> and <strong>Tsuchi-ya</strong> for glassware.</p>
             </div>
 
@@ -621,15 +584,15 @@
             </div>
 
             <div class="time-block">
-                <h3><span class="time-badge">14:00</span> Custom Stationery @ Kakimori (Kuramae)</h3>
+                <h3><span class="time-badge">14:00</span> <a href="https://www.google.com/maps/search/?api=1&query=Kakimori+Kuramae" target="_blank" class="spot-link">Custom Stationery @ Kakimori (Kuramae)</a></h3>
                 <p>Order custom hand-bound notebooks and bespoke bottled fountain pen ink at Kakimori.</p>
             </div>
 
             <div class="meals-box">
                 <h4>🍽️ Day 16 Meal & Beverage Plan</h4>
                 <ul>
-                    <li><strong>Breakfast (08:45):</strong> <em>February Cafe.</em> Famous for thick-cut, buttered Shokupan (Japanese milk bread) toast and excellent pour-over coffee.</li>
-                    <li><strong>Lunch (12:30):</strong> <em>Namiki Yabusoba.</em> Founded in 1913, this historic institution serves handmade buckwheat noodles with a concentrated, dark dipping broth.</li>
+                    <li><strong>Breakfast (08:45):</strong> <a href="https://www.google.com/maps/search/?api=1&query=February+Cafe+Asakusa" target="_blank" class="spot-link"><em>February Cafe.</em></a> Famous for thick-cut, buttered Shokupan (Japanese milk bread) toast and excellent pour-over coffee.</li>
+                    <li><strong>Lunch (12:30):</strong> <a href="https://www.google.com/maps/search/?api=1&query=Namiki+Yabusoba+Asakusa" target="_blank" class="spot-link"><em>Namiki Yabusoba.</em></a> Founded in 1913, this historic institution serves handmade buckwheat noodles with a concentrated, dark dipping broth.</li>
                     <li><span class="backup-tag">BACKUP LUNCH 1</span> <em>Dote no Iseya:</em> Historic tempura in a wooden building that survived the 1923 earthquake.</li>
                     <li><span class="backup-tag">BACKUP LUNCH 2</span> <em>Unatoto:</em> Casual charcoal-grilled eel over rice.</li>
                     <li><strong>Afternoon Sweets:</strong> Enjoy single-origin bean-to-bar hot chocolate inside a renovated factory at <em>Dandelion Chocolate</em>.</li>
@@ -656,7 +619,7 @@
             </div>
 
             <div class="time-block">
-                <h3><span class="time-badge">08:00</span> Street Food Crawl @ Tsukiji Outer Market</h3>
+                <h3><span class="time-badge">08:00</span> <a href="https://www.google.com/maps/search/?api=1&query=Tsukiji+Outer+Market" target="_blank" class="spot-link">Street Food Crawl @ Tsukiji Outer Market</a></h3>
                 <p>Tokyo's iconic historic fish market. Eat sweet rolled dashi omelets at <strong>Yamacho</strong>, slow-simmered horumon-don beef stew at <strong>Kitsuneya</strong>, and fresh Uni (sea urchin) / grilled scallops from seafood stalls.</p>
             </div>
             
@@ -665,7 +628,7 @@
             </div>
 
             <div class="time-block">
-                <h3><span class="time-badge">10:00</span> Architecture & Depachika @ Ginza</h3>
+                <h3><span class="time-badge">10:00</span> <a href="https://www.google.com/maps/search/?api=1&query=Ginza+Six" target="_blank" class="spot-link">Architecture & Depachika @ Ginza</a></h3>
                 <p>Stroll down Chuo-dori. Admire the interior art at <strong>Ginza Six</strong>. Head down into the basement food hall (depachika) of the historic <strong>Mitsukoshi</strong> department store to marvel at perfect $100 melons and wagashi.</p>
             </div>
 
@@ -674,12 +637,12 @@
             </div>
 
             <div class="time-block">
-                <h3><span class="time-badge">12:30</span> Contemporary Art @ SCAI The Bathhouse</h3>
+                <h3><span class="time-badge">12:30</span> <a href="https://www.google.com/maps/search/?api=1&query=SCAI+The+Bathhouse+Yanaka" target="_blank" class="spot-link">Contemporary Art @ SCAI The Bathhouse</a></h3>
                 <p>A premier contemporary art gallery housed inside a 200-year-old renovated public bathhouse (sento) with preserved shoe lockers and high wooden ceilings. Visit nearby <strong>Asakura Museum of Sculpture</strong> for courtyards and tatami tea rooms.</p>
             </div>
 
             <div class="time-block">
-                <h3><span class="time-badge">15:30</span> Sunset Spot 🌇 @ Yuyake Dandan & Yanaka Ginza</h3>
+                <h3><span class="time-badge">15:30</span> <a href="https://www.google.com/maps/search/?api=1&query=Yanaka+Ginza" target="_blank" class="spot-link">Sunset Spot 🌇 @ Yuyake Dandan & Yanaka Ginza</a></h3>
                 <p>Explore the Showa-era shopping street and watch the golden hour lighting down the sunset steps (Yuyake Dandan) around 17:00.</p>
             </div>
 
@@ -687,8 +650,8 @@
                 <h4>🍽️ Day 17 Meal & Beverage Plan</h4>
                 <ul>
                     <li><strong>Market Coffee:</strong> <em>Turret Coffee</em> (Tsukiji). High-grade espresso served from a shop built around a retro fish market turret truck.</li>
-                    <li><strong>Morning Coffee (11:30):</strong> Walk through the peaceful stone paths of Yanaka Cemetery to grab a coffee at <em>Kayaba Coffee</em> (a restored 1938 wooden Kissaten).</li>
-                    <li><strong>Lunch (13:30):</strong> <em>Kamachiku (Nezu).</em> Handmade thick-cut udon served inside a 100-year-old converted brick warehouse overlooking a serene stone garden.</li>
+                    <li><strong>Morning Coffee (11:30):</strong> Walk through the peaceful stone paths of <a href="https://www.google.com/maps/search/?api=1&query=Yanaka+Cemetery" target="_blank" class="spot-link"><em>Yanaka Cemetery</em></a> to grab a coffee at <em>Kayaba Coffee</em> (a restored 1938 wooden Kissaten).</li>
+                    <li><strong>Lunch (13:30):</strong> <a href="https://www.google.com/maps/search/?api=1&query=Nezu+Kamachiku+Udon" target="_blank" class="spot-link"><em>Kamachiku (Nezu).</em></a> Handmade thick-cut udon served inside a 100-year-old converted brick warehouse overlooking a serene stone garden.</li>
                     <li><span class="backup-tag">BACKUP LUNCH</span> <em>Soba Shinkawa:</em> Traditional handmade buckwheat soba in Nezu.</li>
                     <li><strong>Afternoon Snack:</strong> Famous minced beef cutlet (Menchi Katsu) on Yanaka Ginza street. Enjoy local craft beer in a restored 1938 wooden house at <em>Yanaka Beer Hall</em>.</li>
                     <li><strong>Dinner (18:30):</strong> Post-war under-the-tracks izakaya market walk at <em>Ameyoko Market</em> in Ueno; craft cocktails at <em>Cocktail Works Ueno</em>.</li>
@@ -709,17 +672,17 @@
             </div>
 
             <div class="time-block">
-                <h3><span class="time-badge">08:30</span> Single-Origin Pour-Over @ Glitch Coffee</h3>
+                <h3><span class="time-badge">08:30</span> <a href="https://www.google.com/maps/search/?api=1&query=Glitch+Coffee+roasters+Jimbocho" target="_blank" class="spot-link">Single-Origin Pour-Over @ Glitch Coffee</a></h3>
                 <p>Legendary light-roast specialty roaster offering flight tastings of rare beans. Stroll past dozens of vintage second-hand bookstores and antique print shops in Jimbocho.</p>
             </div>
 
             <div class="time-block">
-                <h3><span class="time-badge">10:30</span> Edo Landscape @ Koishikawa Kōrakuen Garden</h3>
+                <h3><span class="time-badge">10:30</span> <a href="https://www.google.com/maps/search/?api=1&query=Koishikawa+Korakuen+Garden" target="_blank" class="spot-link">Edo Landscape @ Koishikawa Kōrakuen Garden</a></h3>
                 <p>Tokyo's oldest surviving feudal-era landscape garden, commissioned in 1629. Features miniature Chinese bridges, maple trees, and reflection ponds.</p>
             </div>
 
             <div class="time-block">
-                <h3><span class="time-badge">16:00</span> Kengo Kuma Shrine & Kagurazaka Alleys</h3>
+                <h3><span class="time-badge">16:00</span> <a href="https://www.google.com/maps/search/?api=1&query=Akagi+Shrine+Kagurazaka" target="_blank" class="spot-link">Kengo Kuma Shrine & Kagurazaka Alleys</a></h3>
                 <p>Visit <strong>Akagi Shrine</strong>, rebuilt in 2010 by master architect Kengo Kuma using glass and natural wood. Explore <strong>Kakurenbo Yokocho</strong>, stone-paved alleys where geisha houses once operated.</p>
             </div>
 
@@ -746,12 +709,12 @@
             </div>
 
             <div class="time-block">
-                <h3><span class="time-badge">09:30</span> Final Coffee & Souvenirs @ Kuramae</h3>
+                <h3><span class="time-badge">09:30</span> <a href="https://www.google.com/maps/search/?api=1&query=Leaves+Coffee+Roasters+Kuramae" target="_blank" class="spot-link">Final Coffee & Souvenirs @ Kuramae</a></h3>
                 <p>Enjoy a final morning pour-over, pick up last-minute ceramics or gifts, and pack bags before check-out.</p>
             </div>
 
             <div class="time-block">
-                <h3><span class="time-badge">15:20</span> Keisei Skyliner @ Keisei-Ueno Station</h3>
+                <h3><span class="time-badge">15:20</span> <a href="https://www.google.com/maps/search/?api=1&query=Keisei+Ueno+Station" target="_blank" class="spot-link">Keisei Skyliner @ Keisei-Ueno Station</a></h3>
                 <p>Board the 15:20 Keisei Skyliner train from Keisei-Ueno Station. Arrive at Narita Terminal 1 at 16:01 (3.5 hours before Flight CA920 at 19:30).</p>
             </div>
 
