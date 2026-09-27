@@ -8,10 +8,13 @@
         :root {
             --primary-bg: #f9f9f7;
             --card-bg: #ffffff;
-            --text-main: #333333;
-            --accent: #b05c5a; /* Traditional vermilion/red */
-            --border: #e0e0e0;
-            --subtle-bg: #f2f2ef;
+            --text-main: #2c3e50;
+            --accent: #b05c5a; /* Vermilion red */
+            --accent-dark: #8c4240;
+            --border: #e2e8f0;
+            --subtle-bg: #f8fafc;
+            --tip-bg: #fffaf0;
+            --tip-border: #e6a23c;
         }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -22,114 +25,200 @@
             padding: 0;
         }
         nav {
-            background-color: var(--text-main);
+            background-color: #1a202c;
             display: flex;
             justify-content: space-around;
-            padding: 12px 0;
+            padding: 14px 0;
             position: sticky;
             top: 0;
             z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
         }
         nav a {
-            color: white;
+            color: #cbd5e0;
             text-decoration: none;
             font-weight: 600;
             font-size: 14px;
+            letter-spacing: 0.5px;
+            transition: color 0.2s;
         }
-        nav a.active {
-            color: var(--accent);
+        nav a:hover, nav a.active {
+            color: #ffffff;
             border-bottom: 2px solid var(--accent);
         }
         .container {
-            padding: 20px;
-            max-width: 800px;
+            padding: 24px 16px;
+            max-width: 850px;
             margin: 0 auto;
         }
-        h1 {
-            text-align: center;
-            font-size: 28px;
-            margin-bottom: 5px;
-        }
-        h2 {
-            color: var(--accent);
-            border-bottom: 2px solid var(--border);
-            padding-bottom: 5px;
-            margin-top: 35px;
-        }
-        .card {
-            background-color: var(--card-bg);
-            border-radius: 8px;
-            padding: 18px;
-            margin-bottom: 25px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.06);
-        }
-        .tag {
-            display: inline-block;
-            background-color: var(--accent);
+        .header-card {
+            background: linear-gradient(135deg, #2c3e50, #1a202c);
             color: white;
-            padding: 3px 10px;
             border-radius: 12px;
-            font-size: 12px;
-            font-weight: bold;
-            margin-bottom: 12px;
+            padding: 24px;
+            margin-bottom: 28px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .header-card h1 {
+            margin: 0 0 8px 0;
+            font-size: 28px;
+            letter-spacing: 1px;
+        }
+        .header-card p {
+            margin: 0;
+            color: #cbd5e0;
+            font-size: 15px;
+        }
+        .hotel-base {
+            background-color: #edf2f7;
+            border: 1px solid #cbd5e0;
+            border-radius: 8px;
+            padding: 14px 18px;
+            margin-top: 16px;
+            font-size: 14px;
+            color: #2d3748;
+            text-align: left;
+        }
+        .day-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 22px;
+            margin-bottom: 32px;
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+        }
+        .day-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 10px;
+            margin-bottom: 18px;
+        }
+        .day-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--accent);
+            margin: 0;
+        }
+        .day-date {
+            font-size: 14px;
+            font-weight: 600;
+            background-color: #fef2f2;
+            color: var(--accent-dark);
+            padding: 4px 12px;
+            border-radius: 16px;
+            border: 1px solid #fecaca;
         }
         .top-tips {
-            background-color: #fffaf0;
-            border-left: 4px solid #e6a23c;
-            padding: 12px 15px;
-            border-radius: 4px;
-            margin-bottom: 15px;
+            background-color: var(--tip-bg);
+            border-left: 4px solid var(--tip-border);
+            padding: 14px 16px;
+            border-radius: 6px;
+            margin-bottom: 20px;
             font-size: 14px;
         }
         .top-tips strong {
             color: #b88230;
-        }
-        .map-link {
             display: block;
-            text-align: center;
-            background-color: var(--text-main);
+            margin-bottom: 6px;
+            font-size: 15px;
+        }
+        .top-tips ul {
+            margin: 0;
+            padding-left: 18px;
+        }
+        .top-tips li {
+            margin-bottom: 4px;
+        }
+        .time-block {
+            margin-bottom: 20px;
+        }
+        .time-block h3 {
+            font-size: 16px;
+            color: #1a202c;
+            margin: 0 0 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .time-badge {
+            background-color: #2d3748;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        .map-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            width: 100%;
+            background-color: #2d3748;
             color: white;
             text-decoration: none;
-            padding: 10px;
-            border-radius: 6px;
-            margin: 12px 0;
-            font-weight: bold;
+            padding: 11px 0;
+            border-radius: 8px;
+            margin: 16px 0;
+            font-weight: 600;
             font-size: 14px;
+            transition: background-color 0.2s;
         }
-        .meals {
+        .map-btn:hover {
+            background-color: #1a202c;
+        }
+        .meals-box {
             background-color: var(--subtle-bg);
-            padding: 14px;
-            border-radius: 6px;
-            margin-top: 15px;
+            border: 1px solid var(--border);
+            padding: 16px;
+            border-radius: 8px;
+            margin-top: 20px;
             font-size: 14px;
         }
-        .transit-tip {
+        .meals-box h4 {
+            margin: 0 0 10px 0;
+            color: #2d3748;
+            font-size: 15px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 6px;
+        }
+        .meals-box ul {
+            margin: 0;
+            padding-left: 18px;
+        }
+        .meals-box li {
+            margin-bottom: 6px;
+        }
+        .transit-alert {
             border-left: 4px solid var(--accent);
-            padding-left: 12px;
-            font-style: italic;
-            font-size: 14px;
-            margin: 15px 0;
+            padding: 10px 14px;
+            font-size: 13.5px;
+            margin: 16px 0;
             background-color: #fffaf9;
+            color: #4a5568;
         }
         details {
-            background-color: #fcfcfc;
+            background-color: #ffffff;
             border: 1px solid var(--border);
-            border-radius: 6px;
+            border-radius: 8px;
             padding: 10px 14px;
-            margin: 10px 0;
+            margin: 12px 0;
         }
         summary {
-            font-weight: bold;
+            font-weight: 600;
             cursor: pointer;
             color: var(--accent);
             font-size: 14px;
         }
         details p {
-            font-size: 13px;
-            margin: 8px 0 0 0;
-            color: #555;
+            font-size: 13.5px;
+            margin: 10px 0 4px 0;
+            color: #4a5568;
+            line-height: 1.5;
         }
-        ul { margin-top: 5px; padding-left: 20px; }
     </style>
 </head>
 <body>
@@ -139,185 +228,252 @@
         <a href="index.html">TOKYO</a>
         <a href="regional.html">KANAZAWA</a>
         <a href="kyoto.html" class="active">KYOTO</a>
+        <a href="osaka.html">OSAKA & KOYASAN</a>
     </nav>
 
     <div class="container">
-        <h1>Kyoto Master Plan</h1>
-        <p style="text-align: center; font-style: italic;">Oct 23 – Oct 26: Authentic, Aesthetic & Unhurried</p>
+        
+        <!-- Header & Base Setup -->
+        <div class="header-card">
+            <h1>Kyoto Master Itinerary</h1>
+            <p>4 Days / 3 Nights • Authentic, Aesthetic & Bus-Free</p>
+            <div class="hotel-base">
+                <strong>🏨 Confirmed Base:</strong> M's Hotel Nijojo Oike (€283 total / Oct 23–26)<br>
+                <strong>📍 Station Hub:</strong> Nijojo-mae Station (Tozai Subway Line) — 3-minute walk.<br>
+                <strong>💡 Logistics Advantage:</strong> Direct subway connection to Philosopher's Path (Keage) and Sanjo/Downtown, and 1 stop to JR Nijo Station for Arashiyama.
+            </div>
+        </div>
 
-        <!-- DAY 1 -->
-        <h2>Friday, Oct 23: The Northern Canal & Autumn Illuminations</h2>
-        <div class="card">
-            <span class="tag">Arrival & East Kyoto</span>
+        <!-- ==================== DAY 1 ==================== -->
+        <div class="day-card">
+            <div class="day-header">
+                <h2 class="day-title">DAY 1</h2>
+                <span class="day-date">Friday, Oct 23</span>
+            </div>
 
             <div class="top-tips">
-                <strong>🎯 DAY 1 TOP TIPS & STRATEGY:</strong>
+                <strong>🎯 DAY 1 TOP TIPS & STRATEGY</strong>
                 <ul>
-                    <li><strong>Arrival Timing:</strong> You arrive on Day 1 of Kyoto's famous Autumn Night Viewings. Do not rush back to the hotel after dinner—the lit bamboo and temples after dark are essential viewing.</li>
-                    <li><strong>No Buses:</strong> Use the subway to reach Keage Station. Walking down the canal eliminates the cross-town traffic trap entirely.</li>
+                    <li><strong>Bus-Free Arrival:</strong> Drop bags at M's Hotel Nijojo Oike and walk 3 minutes to Nijojo-mae Station. Take the Tozai Subway Line straight to Keage Station—zero bus traffic.</li>
+                    <li><strong>First Night Illuminations:</strong> Friday kicks off Kyoto's Autumn Night Viewings. Kiyomizu-dera and Kodai-ji light up after dusk; do not skip the evening walk!</li>
                 </ul>
             </div>
 
-            <p><strong>11:00 AM - Arrival & Base Setup:</strong> Board the direct <em>JR Thunderbird Limited Express</em> from Kanazawa Station straight to Kyoto Station (~2 hours). Check in or drop bags at your hotel (Sanjo/Kiyamachi area recommended).</p>
+            <div class="time-block">
+                <h3><span class="time-badge">11:30 AM</span> Arrival & Hotel Drop</h3>
+                <p>Arrive from Kanazawa via the direct <em>JR Thunderbird Limited Express</em> (~2 hours). Transfer to the Karasuma Subway Line to Karasuma-Oike, switch 1 stop on the Tozai Line to <strong>Nijojo-mae Station</strong>. Drop bags at M's Hotel Nijojo Oike.</p>
+            </div>
 
-            <p><strong>01:30 PM - The Philosopher's Path Walk:</strong> Take the Tozai Subway Line to Keage Station. Walk through the giant wooden Sanmon Gate at <strong>Nanzen-ji</strong>, view the 1890s brick <strong>Suirokaku Aqueduct</strong>, then follow the quiet canal path north past the mossy gate of <strong>Honen-in</strong> to <strong>Ginkaku-ji</strong> (Silver Pavilion).</p>
+            <div class="time-block">
+                <h3><span class="time-badge">01:30 PM</span> Northern Canal & Philosopher's Path Walk</h3>
+                <p>Take the Tozai Line directly from Nijojo-mae to <strong>Keage Station</strong>. Walk through the massive wooden Sanmon Gate at <strong>Nanzen-ji</strong>, inspect the 1890s Western brick <strong>Suirokaku Aqueduct</strong>, then follow the quiet canal path north past the moss-covered gate of <strong>Honen-in</strong> to <strong>Ginkaku-ji</strong> (Silver Pavilion).</p>
+            </div>
 
             <details>
                 <summary>💡 Cultural Context: Philosopher's Path & Nanzen-ji</summary>
-                <p><strong>Philosopher's Path:</strong> Named after Nishida Kitaro, one of Japan's most prominent 20th-century philosophers, who practiced meditation while walking this stone canal path daily to Kyoto University.</p>
-                <p><strong>Suirokaku Aqueduct:</strong> Built in 1890 as part of the Lake Biwa Canal project to modernize Kyoto. Constructing a Western, Roman-style red-brick aqueduct right through the grounds of a 13th-century Zen temple was controversial, but today it forms one of Kyoto's most unique architectural contrasts.</p>
-                <p><strong>Ginkaku-ji (Silver Pavilion):</strong> Built in 1482 by Shogun Ashikaga Yoshimasa as a retirement villa. Unlike the flamboyant Golden Pavilion, it was never covered in silver leaf due to war interruptions. It represents the concept of <em>Wabi-sabi</em>—finding deep beauty in simplicity, restraint, and imperfection.</p>
+                <p><strong>Philosopher's Path:</strong> Named after Nishida Kitaro, one of Japan's most prominent 20th-century philosophers, who practiced walking meditation along this stone canal daily on his route to Kyoto University.</p>
+                <p><strong>Suirokaku Aqueduct:</strong> Built in 1890 as part of the Lake Biwa Canal project to modernize Kyoto. Constructing a Western Roman-style red-brick aqueduct right through a 13th-century Zen temple was controversial, creating one of Kyoto's most striking architectural contrasts.</p>
+                <p><strong>Ginkaku-ji (Silver Pavilion):</strong> Built in 1482 by Shogun Ashikaga Yoshimasa as a retirement villa. Unlike the Golden Pavilion, it was never covered in silver leaf due to war interruptions. It embodies <em>Wabi-sabi</em>—the deep aesthetic appreciation of simplicity, restraint, and understated elegance.</p>
             </details>
 
-            <a class="map-link" href="https://www.google.com/maps/dir/Keage+Station/Nanzen-ji/Honen-in/Ginkaku-ji" target="_blank">📍 Open Day 1 Afternoon Map (Philosopher's Path)</a>
+            <a class="map-btn" href="https://www.google.com/maps/dir/Nijojo-mae+Station/Keage+Station/Nanzen-ji/Honen-in/Ginkaku-ji" target="_blank">📍 Open Day 1 Afternoon Map (Subway + Philosopher's Path)</a>
 
-            <p><strong>05:30 PM - Autumn Night Illuminations:</strong> Walk through the historic stone alleys of <strong>Ninenzaka & Sannenzaka</strong> as lantern lights turn on. Visit <strong>Kiyomizu-dera</strong> (experience the <em>Tainai-meguri</em> tunnel beneath the temple) and the glowing Zen gardens and bamboo grove at <strong>Kodai-ji</strong>.</p>
+            <div class="time-block">
+                <h3><span class="time-badge">05:30 PM</span> Southern Higashiyama Autumn Night Illuminations</h3>
+                <p>Stroll through the preserved lantern-lit stone alleys of <strong>Ninenzaka & Sannenzaka</strong>. Visit <strong>Kiyomizu-dera</strong> to experience the pitch-black <em>Tainai-meguri</em> tunnel beneath the hall and view the temple stage lit against the night sky, followed by the glowing moss gardens at <strong>Kodai-ji</strong>.</p>
+            </div>
 
             <details>
                 <summary>💡 Cultural Context: Kiyomizu-dera & Tainai-meguri</summary>
-                <p><strong>Kiyomizu-dera:</strong> Founded in 778, famous for its massive wooden stage built without a single nail. It hangs over the hillside, offering sweeping views of Kyoto.</p>
-                <p><strong>Tainai-meguri:</strong> Translates to "entering the womb." You walk through a pitch-black basement beneath the Zuigudo hall, holding a giant beaded handrail, representing symbolic rebirth as you emerge back into the light.</p>
+                <p><strong>Kiyomizu-dera:</strong> Founded in 778 AD, famous for its massive wooden stage built entirely without nails, jutting out over the hillside overlooking Kyoto.</p>
+                <p><strong>Tainai-meguri:</strong> Translates to "entering the womb." You navigate a completely pitch-black basement beneath the Zuigudo hall in total silence holding a single beaded handrail, symbolizing spiritual rebirth as you re-emerge into the light.</p>
             </details>
 
-            <a class="map-link" href="https://www.google.com/maps/dir/Ninenzaka/Sannenzaka/Kiyomizu-dera/Kodai-ji+Temple" target="_blank">📍 Open Day 1 Evening Map (Higashiyama Illumination)</a>
+            <a class="map-btn" href="https://www.google.com/maps/dir/Ninenzaka/Sannenzaka/Kiyomizu-dera/Kodai-ji+Temple" target="_blank">📍 Open Day 1 Evening Map (Higashiyama Illuminations)</a>
 
-            <div class="meals">
-                <strong>🍽️ Complete Meal & Drink Plan:</strong>
+            <div class="transit-alert">
+                <strong>🚇 Transit Tip:</strong> The Tozai Subway Line connects Nijojo-mae directly to Keage Station in ~12 minutes. Avoid the city buses at all costs.
+            </div>
+
+            <div class="meals-box">
+                <h4>🍽️ Day 1 Meal & Beverage Plan</h4>
                 <ul>
-                    <li><strong>Lunch / Mid-day Snack:</strong> Handmade udon at <em>Omen Ginkaku-ji</em> right at the end of the Philosopher's Path walk.</li>
-                    <li><strong>Coffee Break:</strong> <em>Weekenders Coffee</em> (hidden tea-house coffee shop in a quiet downtown lot) or <em>Cafe Bibliotic Hello!</em> (machiya cafe with a giant bookshelf wall).</li>
-                    <li><strong>Dinner:</strong> <em>Giro Giro Hitoshina</em> (Modern, approachable Kaiseki/Kappo dining in an old building overlooking the Takasegawa canal - reserve ahead).</li>
-                    <li><strong>Dinner Backups:</strong> <em>Menami</em> (authentic Obanzai) or <em>Kappou Roko</em>.</li>
-                    <li><strong>Nightcap / Drinks:</strong> <em>Gion Finlandia Bar</em> (classic cocktail bar inside a restored wooden geisha house).</li>
+                    <li><strong>Late Lunch / Mid-Day Stop:</strong> Handmade udon noodles at <em>Omen Ginkaku-ji</em> at the end of the Philosopher's Path.</li>
+                    <li><strong>Coffee Break:</strong> Drip coffee at <em>Weekenders Coffee</em> (hidden alley courtyard) or <em>Cafe Bibliotic Hello!</em> (machiya cafe with a giant floor-to-ceiling bookshelf).</li>
+                    <li><strong>Dinner:</strong> <em>Giro Giro Hitoshina</em> (Modern, creative Kaiseki/Kappo along the Takasegawa canal — reserve ahead!).</li>
+                    <li><strong>Dinner Backups:</strong> <em>Menami</em> (traditional Obanzai home cooking) or <em>Kappou Roko</em>.</li>
+                    <li><strong>Nightcap / Drinks:</strong> Craft cocktails at <em>Gion Finlandia Bar</em> set in a converted geisha house.</li>
                 </ul>
             </div>
         </div>
 
-        <!-- DAY 2 -->
-        <h2>Saturday, Oct 24: Torii Gates, Matcha & The Nara Deer</h2>
-        <div class="card">
-            <span class="tag">South: Fushimi, Uji, Nara</span>
+        <!-- ==================== DAY 2 ==================== -->
+        <div class="day-card">
+            <div class="day-header">
+                <h2 class="day-title">DAY 2</h2>
+                <span class="day-date">Saturday, Oct 24</span>
+            </div>
 
             <div class="top-tips">
-                <strong>🎯 DAY 2 TOP TIPS & STRATEGY:</strong>
+                <strong>🎯 DAY 2 TOP TIPS & STRATEGY</strong>
                 <ul>
-                    <li><strong>Strict 7:00 AM Start:</strong> Fushimi Inari becomes extremely crowded by 9:30 AM. Hitting the torii gates at 7:00 AM guarantees quiet, empty photos and cooler mountain walking.</li>
-                    <li><strong>Single Train Line:</strong> Fushimi Inari, Uji, and Nara sit on the exact same JR Nara train line. You never need to transfer or take a bus all day.</li>
+                    <li><strong>Strict 07:00 AM Departure:</strong> Fushimi Inari gets swarmed by tour groups by 09:15 AM. Hitting the red torii gates at 7:00 AM guarantees quiet photos and peaceful mountain walking.</li>
+                    <li><strong>Direct Southbound Rail:</strong> Fushimi Inari, Uji, and Nara sit on the exact same JR train line. Zero transfers required between stops.</li>
                 </ul>
             </div>
 
-            <p><strong>07:00 AM - Fushimi Inari Shrine:</strong> Beat the swarms. Walk through the <em>Senbon Torii</em> (thousands of vermilion gates) up to the Yotsutsuji intersection for views over Kyoto. Stop at <strong>Inari Saryo</strong> on the descent.</p>
+            <div class="time-block">
+                <h3><span class="time-badge">07:00 AM</span> Fushimi Inari-taisha</h3>
+                <p>From M's Hotel, take the Tozai Subway 2 stops to Sanjo-Keihan and transfer to the Keihan Main Line down to <strong>Fushimi-Inari Station</strong>. Walk through the <em>Senbon Torii</em> (thousands of vermilion gates) up to the Yotsutsuji intersection for city panoramas. Take a break at <strong>Inari Saryo</strong> on the descent.</p>
+            </div>
 
             <details>
                 <summary>💡 Cultural Context: Fushimi Inari & Fox Messengers</summary>
-                <p><strong>Fushimi Inari:</strong> The head shrine for Inari, the Shinto god of rice, sake, and business prosperity. The thousands of red gates are all donated by Japanese businesses hoping for commercial success, with the donor's name and date carved onto the back of each pillar.</p>
-                <p><strong>Foxes (Kitsune):</strong> You will see hundreds of stone fox statues holding keys, jewels, or rice stalks in their mouths. They are considered the sacred messengers of Inari, not gods themselves.</p>
+                <p><strong>Fushimi Inari:</strong> The head shrine for Inari, the Shinto deity of rice, agriculture, and business prosperity. The thousands of torii gates are all individual donations from Japanese businesses, with the donor's company name and date carved into the back of each wood post.</p>
+                <p><strong>Kitsune (Foxes):</strong> Stone fox statues guard the shrine carrying keys, scrolls, or rice sheaves in their mouths. They act as sacred messengers for Inari rather than deities themselves.</p>
             </details>
 
-            <p><strong>10:00 AM - Uji (Matcha Capital):</strong> Hop the JR train south to Uji. Visit <strong>Byodo-in Temple</strong> (Phoenix Hall) sitting on its reflection pond, and walk across to the quiet <strong>Ujigami-jinja</strong>.</p>
+            <div class="time-block">
+                <h3><span class="time-badge">10:00 AM</span> Uji Matcha Capital</h3>
+                <p>Hop on the southbound JR Nara Line to <strong>Uji Station</strong>. Visit <strong>Byodo-in Temple</strong> (Phoenix Hall) on its reflection pond and cross the river to <strong>Ujigami-jinja</strong> (Japan's oldest standing Shinto shrine).</p>
+            </div>
 
             <details>
                 <summary>💡 Cultural Context: Byodo-in & Uji Matcha</summary>
-                <p><strong>Byodo-in:</strong> Built in 1053, its Phoenix Hall (*Hoo-do*) is designed to represent the Pure Land Buddhist heavenly paradise on earth. It is so iconic it is depicted on the back of the 10-yen coin.</p>
-                <p><strong>Uji Matcha:</strong> Uji's unique misty river climate and rich soil made it the birthplace of Japanese green tea cultivation in the 12th century. It remains the gold standard for ceremonial matcha across Japan.</p>
+                <p><strong>Byodo-in:</strong> Built in 1053, its Phoenix Hall (*Hoo-do*) represents Pure Land Buddhist heavenly paradise on earth. It is so famous it is stamped onto the Japanese 10-yen coin.</p>
+                <p><strong>Uji Matcha:</strong> Uji's misty river climate produced Japan's first cultivated green tea in the 12th century, remaining the premier standard for ceremonial matcha nationwide.</p>
             </details>
 
-            <p><strong>01:30 PM - Nara Walking Tour:</strong> Continue south to Nara. Execute the 5.3km walking route: Kintetsu-Nara Station ➔ Yoshikien Garden ➔ <strong>Todai-ji (Daibutsu)</strong> ➔ Nigatsu-do views ➔ forest trail to <strong>Kasuga Taisha</strong> shrine.</p>
+            <div class="time-block">
+                <h3><span class="time-badge">01:30 PM</span> Wonders of Nara Walking Tour</h3>
+                <p>Continue south on the JR line to <strong>Nara Station</strong>. Execute the 5.3km walking route: Yoshikien Garden ➔ <strong>Todai-ji (Daibutsu Great Buddha)</strong> ➔ Nigatsu-do views ➔ forest trail to <strong>Kasuga Taisha</strong> shrine ➔ Naramachi district.</p>
+            </div>
 
             <details>
-                <summary>💡 Cultural Context: Todai-ji & Nara Deer</summary>
-                <p><strong>Todai-ji (Great Buddha Hall):</strong> Constructed in 752 AD, it houses the world's largest bronze statue of the Buddha (Daibutsu). The building itself was reconstructed after fire and is still one of the largest wooden structures in the world.</p>
-                <p><strong>Sacred Deer:</strong> According to local legend, the god of Kasuga Taisha arrived in Nara riding a white deer. Today, over 1,200 free-roaming deer are protected as natural monuments. You don't need to buy crackers; simply observe them in the ancient parklands.</p>
+                <summary>💡 Cultural Context: Todai-ji & Sacred Deer</summary>
+                <p><strong>Todai-ji:</strong> Constructed in 752 AD, housing the world's largest bronze Buddha statue (*Daibutsu*). The Great Buddha Hall remains one of the largest wooden structures on earth.</p>
+                <p><strong>Nara Deer:</strong> According to local Shinto legend, the god of Kasuga Taisha arrived in Nara riding a sacred white deer. Today, over 1,200 free-roaming deer are protected as living national treasures.</p>
             </details>
 
-            <a class="map-link" href="https://www.google.com/maps/dir/Kintetsu-Nara+Station/Yoshikien/Todai-ji/Nigatsu-do/Mizuya+Chaya/Kasuga+Taisha/Naramachi" target="_blank">📍 Open Day 2 Nara Walking Map</a>
+            <a class="map-btn" href="https://www.google.com/maps/dir/Nara+Station/Yoshikien/Todai-ji/Nigatsu-do/Mizuya+Chaya/Kasuga+Taisha/Naramachi" target="_blank">📍 Open Day 2 Nara Walking Route Map</a>
 
-            <div class="meals">
-                <strong>🍽️ Complete Meal & Drink Plan:</strong>
+            <div class="transit-alert">
+                <strong>🚇 Transit Tip:</strong> From M's Hotel, walk 3 mins to Nijojo-mae, take the Tozai line to Sanjo-Keihan, then Keihan line straight to Fushimi Inari. From Fushimi Inari, use the JR Line for Uji and Nara.
+            </div>
+
+            <div class="meals-box">
+                <h4>🍽️ Day 2 Meal & Beverage Plan</h4>
                 <ul>
-                    <li><strong>Early Breakfast:</strong> Grab high-quality onigiri and tea from a convenience store the night before to eat before your 7:00 AM hike.</li>
-                    <li><strong>Mid-Morning Tea (Uji):</strong> <em>Tsuen Tea</em> (located right by the river, operating continuously since 1160 AD) or <em>Tsujiri Uji</em> for matcha parfaits.</li>
-                    <li><strong>Afternoon Sweets Break (Nara):</strong> <em>Mizuya-chaya</em> (a thatched-roof tea house nestled deep in the forest along the Kasuga Taisha walking trail).</li>
-                    <li><strong>Late Lunch / Dinner (Nara):</strong> <em>Kuruminoki Shikanofune Kamado</em> (located in historic Naramachi, specializing in slow-food cooked in traditional wood-fired ovens).</li>
-                    <li><strong>Dinner Backup:</strong> <em>Hiraso</em> (famous for <em>kakinoha-zushi</em>—sushi wrapped in persimmon leaves).</li>
-                    <li><strong>Evening Sake Tasting (Back in Kyoto):</strong> <em>Fushimi Sake Village (Kura Koji)</em> to sample an 18-sake tasting flight, or <em>Torisei</em> for fresh draft sake in an old brewery.</li>
+                    <li><strong>Early Breakfast:</strong> High-quality convenience store onigiri and hot green tea grabbed the night before to eat before your 7:00 AM start.</li>
+                    <li><strong>Mid-Morning Tea (Uji):</strong> <em>Tsuen Tea</em> (the world's oldest operating tea house, operating since 1160 AD) or <em>Tsujiri Uji</em> for rich matcha parfaits.</li>
+                    <li><strong>Afternoon Sweets Break (Nara):</strong> <em>Mizuya-chaya</em> (a thatched-roof tea house nestled deep in the forest along the Kasuga Taisha trail).</li>
+                    <li><strong>Late Lunch / Early Dinner (Nara):</strong> <em>Kuruminoki Shikanofune Kamado</em> (Naramachi slow-food cooked in traditional wood-fired ovens).</li>
+                    <li><strong>Dinner Backup:</strong> <em>Hiraso</em> (famous for <em>kakinoha-zushi</em> — sushi wrapped in persimmon leaves).</li>
+                    <li><strong>Evening Sake Flight (Kyoto):</strong> <em>Fushimi Sake Village (Kura Koji)</em> for an 18-sake tasting flight, or <em>Torisei</em> for draft sake inside an authentic brewery.</li>
                 </ul>
             </div>
         </div>
 
-        <!-- DAY 3 -->
-        <h2>Sunday, Oct 25: Arashiyama Bamboo & The Tenjin-san Market</h2>
-        <div class="card">
-            <span class="tag">West & Northwest Kyoto</span>
+        <!-- ==================== DAY 3 ==================== -->
+        <div class="day-card">
+            <div class="day-header">
+                <h2 class="day-title">DAY 3</h2>
+                <span class="day-date">Sunday, Oct 25</span>
+            </div>
 
             <div class="top-tips">
-                <strong>🎯 DAY 3 TOP TIPS & STRATEGY:</strong>
+                <strong>🎯 DAY 3 TOP TIPS & STRATEGY</strong>
                 <ul>
-                    <li><strong>07:30 AM Arashiyama Arrival:</strong> The bamboo grove gets overwhelmed by tour buses by 9:00 AM. Start early, hit Okochi Sanso immediately when it opens, then leave the main drag.</li>
-                    <li><strong>The 25th Flea Market:</strong> Today is October 25th! The monthly Tenjin-san market at Kitano Tenman-gu is a rare highlight for antique ceramics, textiles, and street food.</li>
-                    <li><strong>Transit Hack:</strong> Take the Randen (Keifuku) retro streetcar between Arashiyama and Kitano Tenman-gu to bypass city bus traffic.</li>
+                    <li><strong>07:30 AM Arashiyama Arrival:</strong> Beat the tour buses to the Bamboo Grove. Head straight into Okochi Sanso Villa the moment gates open at 8:30 AM.</li>
+                    <li><strong>The 25th Flea Market:</strong> Today is Sunday, Oct 25! The monthly <strong>Tenjin-san Flea Market</strong> at Kitano Tenman-gu is a top highlight for antique ceramics, kimonos, and food stalls.</li>
+                    <li><strong>Randen Streetcar Shortcut:</strong> Ride the retro Randen tram directly between Arashiyama and Kitano Tenman-gu to glide past road traffic.</li>
                 </ul>
             </div>
 
-            <p><strong>07:30 AM - Arashiyama Bamboo & Gardens:</strong> Arrive early at Sagano-Arashiyama Station. Walk the <strong>Bamboo Grove</strong> in relative silence, then enter <strong>Okochi Sanso Villa</strong> (enjoy matcha overlooking the mountain valley). Pass through <strong>Tenryu-ji Temple</strong> garden down to the Katsura River and Togetsu-kyo bridge.</p>
+            <div class="time-block">
+                <h3><span class="time-badge">07:30 AM</span> Arashiyama Bamboo & Villa Gardens</h3>
+                <p>Walk 8 minutes from M's Hotel to <strong>JR Nijo Station</strong> and take the train directly to <strong>Saga-Arashiyama Station</strong> (10 mins). Walk through the silent <strong>Bamboo Grove</strong>, enter <strong>Okochi Sanso Villa</strong> for matcha with gorge views, and pass through <strong>Tenryu-ji Garden</strong> down to Togetsu-kyo Bridge.</p>
+            </div>
 
             <details>
                 <summary>💡 Cultural Context: Okochi Sanso & Tenryu-ji</summary>
-                <p><strong>Okochi Sanso:</strong> The former private estate of silent-film samurai actor Denjiro Okochi, who spent 30 years and his film earnings creating these tranquil hilltop gardens overlooking Arashiyama gorge.</p>
-                <p><strong>Tenryu-ji:</strong> Head temple of the Rinzai Zen sect, founded in 1339. Its 14th-century Sogenchi garden has survived in its original form, designed to borrow the natural scenery of the Arashiyama mountains as its background (*Shakkei*).</p>
+                <p><strong>Okochi Sanso:</strong> The former private estate of silent-film samurai actor Denjiro Okochi, who spent 30 years creating these tranquil hilltop gardens overlooking the Arashiyama gorge.</p>
+                <p><strong>Tenryu-ji:</strong> Rinzai Zen temple founded in 1339. Its 14th-century Sogenchi garden incorporates the Arashiyama mountains as a natural backdrop using the technique of <em>Shakkei</em> (borrowed scenery).</p>
             </details>
 
-            <a class="map-link" href="https://www.google.com/maps/dir/Saga-Arashiyama+Station/Arashiyama+Bamboo+ Grove/Okochi+Sanso+Garden/Tenryu-ji/Togetsukyo+Bridge" target="_blank">📍 Open Day 3 Morning Map (Arashiyama Route)</a>
+            <a class="map-btn" href="https://www.google.com/maps/dir/Saga-Arashiyama+Station/Arashiyama+Bamboo+Grove/Okochi+Sanso+Garden/Tenryu-ji/Togetsukyo+Bridge" target="_blank">📍 Open Day 3 Morning Map (Arashiyama Route)</a>
 
-            <p><strong>11:30 AM - Tenjin-san Flea Market (Kitano Tenman-gu):</strong> Ride the Randen retro streetcar east to Kitano Tenman-gu. Browse hundreds of stalls selling antique kimonos, pottery, crafts, and food.</p>
+            <div class="time-block">
+                <h3><span class="time-badge">11:30 AM</span> Tenjin-san Antique Market (Oct 25 Only)</h3>
+                <p>Take the Keifuku Randen tram from Arashiyama to Kitano-Hakubaicho. Walk to <strong>Kitano Tenman-gu</strong> shrine for the famous monthly <strong>Tenjin-san Flea Market</strong>. Browse hundreds of outdoor stalls selling antique ceramics, vintage kimono fabrics, woodblock prints, and street food.</p>
+            </div>
 
-            <p><strong>02:00 PM - Northwest Zen Hits:</strong> Take a quick tactical trip to <strong>Ryoan-ji</strong> (Japan's most famous Zen rock garden) and <strong>Kinkaku-ji</strong> (Golden Pavilion). Take the iconic photo and exit promptly.</p>
+            <div class="time-block">
+                <h3><span class="time-badge">02:00 PM</span> Northwest Zen Quick Hits</h3>
+                <p>Surgical strike to <strong>Ryoan-ji</strong> to contemplate the famous Zen rock garden, followed by <strong>Kinkaku-ji</strong> (Golden Pavilion). Take the iconic photo across the pond and leave promptly.</p>
+            </div>
 
             <details>
                 <summary>💡 Cultural Context: Ryoan-ji Rock Garden</summary>
-                <p><strong>Ryoan-ji:</strong> Contains 15 rocks arranged in an ocean of raked white gravel inside a small rectangle. The layout is designed so that from whichever angle you view the garden while seated on the veranda, at least one rock is always hidden from your sight, symbolizing that human perception is always incomplete.</p>
+                <p><strong>Ryoan-ji:</strong> Contains 15 rocks arranged inside a rectangle of raked white gravel. The arrangement is designed so that from whichever angle you view the garden while seated on the veranda, at least one rock remains hidden from sight, symbolizing that human understanding is inherently incomplete.</p>
             </details>
 
-            <p><strong>05:30 PM - Geiko District Walk:</strong> Return to central Kyoto. Execute the self-guided evening walk from <strong>Yasaka-jinja</strong> ➔ historic dark-wood alleys of <strong>Hanami-koji</strong> ➔ <strong>Tatsumi-bashi bridge</strong> in Shimbashi ➔ across the river to <strong>Ponto-cho Alley</strong> and <strong>Kiyamachi-dori canal</strong>.</p>
+            <div class="time-block">
+                <h3><span class="time-badge">05:30 PM</span> Geiko District Twilight Stroll</h3>
+                <p>Return to central Kyoto. Execute the self-guided evening walk: <strong>Yasaka-jinja</strong> ➔ historic dark-wood alleys of <strong>Hanami-koji</strong> ➔ <strong>Tatsumi-bashi bridge</strong> in Shimbashi ➔ across the river to lantern-lit <strong>Ponto-cho Alley</strong> and <strong>Kiyamachi-dori canal</strong>.</p>
+            </div>
 
-            <a class="map-link" href="https://www.google.com/maps/dir/Yasaka+Shrine/Hanami-koji/Tatsumi+Bridge/Pontocho+Alley/Kiyamachi-dori" target="_blank">📍 Open Day 3 Evening Map (Geiko District Walk)</a>
+            <a class="map-btn" href="https://www.google.com/maps/dir/Yasaka+Shrine/Hanami-koji/Tatsumi+Bridge/Pontocho+Alley/Kiyamachi-dori" target="_blank">📍 Open Day 3 Evening Map (Geiko District Walk)</a>
 
-            <div class="meals">
-                <strong>🍽️ Complete Meal & Drink Plan:</strong>
+            <div class="transit-alert">
+                <strong>🚇 Transit Tip:</strong> Walk from M's Hotel to JR Nijo Station (8 min walk) for the fastest train to Arashiyama (10 mins). Use the Randen streetcar to travel from Arashiyama to Kitano Tenman-gu.
+            </div>
+
+            <div class="meals-box">
+                <h4>🍽️ Day 3 Meal & Beverage Plan</h4>
                 <ul>
-                    <li><strong>Morning Coffee / Bakery:</strong> <em>Warewarewa Arashiyama</em> (located inside a 210-year-old thatched-roof machiya) or <em>Sagano-yu</em> (cafe set inside a restored 1920s bathhouse).</li>
-                    <li><strong>Lunch Options:</strong> <em>Shigetsu</em> (Michelin-rated Zen Buddhist vegetarian cuisine eaten on tatami inside Tenryu-ji) or <em>exCafe Arashiyama</em> (grill your own dango on a miniature charcoal stove).</li>
-                    <li><strong>Market Snacks:</strong> Grab fresh street food (yakisoba, dango, taiyaki) at the Tenjin-san market, or eat tofu specialties at <em>Toyouke-jaya</em> across from Kitano Tenman-gu.</li>
-                    <li><strong>Sweets Break:</strong> <em>Telacoya</em> for hanami dango skewers along the river.</li>
-                    <li><strong>Dinner:</strong> Relaxed izakaya night along the lanterns of Ponto-cho or Kiyamachi canal. Options: <em>Gion Yuki</em>, <em>Teppan Tavern Tenamonya</em>, or <em>Ochazuke Bar & Cafe Chi</em>.</li>
+                    <li><strong>Morning Bakery / Coffee:</strong> <em>Warewarewa Arashiyama</em> (bakery in a 210-year-old thatched-roof machiya) or <em>Sagano-yu</em> (bathhouse cafe).</li>
+                    <li><strong>Lunch (Arashiyama):</strong> <em>Shigetsu</em> (Michelin-rated Zen Buddhist vegetarian cuisine inside Tenryu-ji) or <em>exCafe Arashiyama</em> (grill your own dango over charcoal).</li>
+                    <li><strong>Market Street Food / Snacks:</strong> Try fresh yakisoba, taiyaki, or dango skewers at the Tenjin-san Market, or tofu specialties at <em>Toyouke-jaya</em> across from the shrine.</li>
+                    <li><strong>Afternoon Sweets:</strong> <em>Telacoya</em> for hanami dango skewers along the riverbank.</li>
+                    <li><strong>Dinner:</strong> Relaxed izakaya night along the Ponto-cho lanterns or Kiyamachi canal. Options: <em>Gion Yuki</em>, <em>Teppan Tavern Tenamonya</em>, or <em>Ochazuke Bar & Cafe Chi</em>.</li>
                 </ul>
             </div>
         </div>
 
-        <!-- DAY 4 -->
-        <h2>Monday, Oct 26: Riverside Morning & Departure</h2>
-        <div class="card">
-            <span class="tag">Morning Transition</span>
+        <!-- ==================== DAY 4 ==================== -->
+        <div class="day-card">
+            <div class="day-header">
+                <h2 class="day-title">DAY 4</h2>
+                <span class="day-date">Monday, Oct 26</span>
+            </div>
 
             <div class="top-tips">
-                <strong>🎯 DAY 4 TOP TIPS & STRATEGY:</strong>
+                <strong>🎯 DAY 4 TOP TIPS & STRATEGY</strong>
                 <ul>
-                    <li><strong>Relaxed Finish:</strong> After three days of early mornings, keep your final hours flexible. Enjoy the river views and grab legendary fresh mochi before checking out.</li>
+                    <li><strong>Relaxed Transition:</strong> After three days of early starts, keep your final morning flexible. Walk the river, grab fresh mochi, and transit to Osaka Namba (~30 min train).</li>
                 </ul>
             </div>
 
-            <p><strong>Morning - Kamo-gawa Stroll / Cycle:</strong> Take a quiet morning walk or bike ride along the <strong>Kamo-gawa river path</strong> up to the Kamo-gawa Delta to hop across the stepping stones in the water.</p>
+            <div class="time-block">
+                <h3><span class="time-badge">09:00 AM</span> Kamo-gawa River Walk & Stepping Stones</h3>
+                <p>Take a morning stroll or bike ride along the <strong>Kamo-gawa river path</strong> up to the Kamo-gawa Delta to hop across the giant turtle-shaped stepping stones in the water.</p>
+            </div>
 
-            <p><strong>Craft Stop:</strong> Pick up any final ceramic or tea souvenirs near the river or at the <strong>Kyoto Ceramic Centre</strong> before heading to Kyoto Station to depart for your final leg.</p>
+            <div class="time-block">
+                <h3><span class="time-badge">11:30 AM</span> Check-Out & Osaka Transition</h3>
+                <p>Check out from M's Hotel Nijojo Oike. Take the subway to Kyoto Station and board the rapid train to Osaka (Namba) to drop main bags before heading up to <strong>Koyasan (Sainan-in Temple)</strong> on Tuesday, Oct 27.</p>
+            </div>
 
-            <div class="meals">
-                <strong>🍽️ Complete Meal Plan:</strong>
+            <div class="meals-box">
+                <h4>🍽️ Day 4 Meal Plan</h4>
                 <ul>
-                    <li><strong>Breakfast / Sweet:</strong> Pick up legendary <em>Mame Daifuku</em> (sweet rice cake with black beans and red bean paste) from <em>Demachi Futaba</em> near the delta and eat it right by the riverbank.</li>
-                    <li><strong>Coffee:</strong> <em>Okaffe Kyoto</em> or a final drip coffee at <em>Weekenders Coffee</em>.</li>
+                    <li><strong>Breakfast / Mochi Stop:</strong> Legendary <em>Mame Daifuku</em> (sweet rice cake with black beans and red bean paste) from <em>Demachi Futaba</em> near the delta, eaten on the riverbank.</li>
+                    <li><strong>Final Coffee:</strong> Drip coffee at <em>Okaffe Kyoto</em> or <em>Weekenders Coffee</em>.</li>
                 </ul>
             </div>
         </div>
+
     </div>
 
 </body>
