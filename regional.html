@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kanazawa & Yamanaka Onsen - Japan 2026</title>
+    <title>Regional Leg - Japan 2026</title>
     <style>
         :root {
             --primary-bg: #f9f9f7;
@@ -50,7 +50,7 @@
         .day-nav {
             background-color: #2d3748;
             display: flex;
-            justify-content: center;
+            justify-content: flex-start;
             gap: 8px;
             padding: 8px 12px;
             position: sticky;
@@ -60,7 +60,9 @@
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             overflow-x: auto;
             white-space: nowrap;
+            scrollbar-width: none;
         }
+        .day-nav::-webkit-scrollbar { display: none; }
         .day-nav a {
             color: #e2e8f0;
             text-decoration: none;
@@ -155,13 +157,6 @@
             margin-bottom: 6px;
             font-size: 15px;
         }
-        .top-tips ul {
-            margin: 0;
-            padding-left: 18px;
-        }
-        .top-tips li {
-            margin-bottom: 4px;
-        }
         .time-block {
             margin-bottom: 20px;
         }
@@ -200,27 +195,15 @@
         .map-btn:hover {
             background-color: #1a202c;
         }
-        .meals-box {
-            background-color: var(--subtle-bg);
-            border: 1px solid var(--border);
-            padding: 16px;
-            border-radius: 8px;
-            margin-top: 20px;
-            font-size: 14px;
-        }
-        .meals-box h4 {
-            margin: 0 0 10px 0;
-            color: #2d3748;
-            font-size: 15px;
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 6px;
-        }
-        .meals-box ul {
-            margin: 0;
-            padding-left: 18px;
-        }
-        .meals-box li {
-            margin-bottom: 6px;
+        .step-tag {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 700;
+            color: #2f855a;
+            background-color: #c6f6d5;
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-right: 4px;
         }
         .transit-alert {
             border-left: 4px solid var(--accent);
@@ -249,6 +232,8 @@
             color: #4a5568;
             line-height: 1.5;
         }
+        details ul, details ol { padding-left: 18px; margin-top: 6px; font-size: 13.5px; color: #4a5568; }
+        details li { margin-bottom: 6px; }
     </style>
 </head>
 <body>
@@ -263,164 +248,282 @@
 
     <!-- Day Sub-Navigation Jump Bar -->
     <div class="day-nav">
-        <a href="#kanazawa-day1">DAY 4: KANAZAWA CASTLE & GARDENS</a>
-        <a href="#kanazawa-day2">DAY 5: SAMURAI & MARKET</a>
-        <a href="#yamanaka-day">DAY 6: YAMANAKA ONSEN RYOKAN</a>
+        <a href="#oct18">OCT 18</a>
+        <a href="#oct19">OCT 19</a>
+        <a href="#oct20">OCT 20</a>
+        <a href="#oct21">OCT 21</a>
+        <a href="#oct22">OCT 22</a>
     </div>
 
     <div class="container">
         
         <!-- Header & Base Setup -->
         <div class="header-card">
-            <h1>Kanazawa & Yamanaka Onsen</h1>
-            <p>Crafts, Castle Grounds & 800-Year-Old Onsen Sanctuary</p>
+            <h1>Regional Leg: Kanazawa & Yamanaka</h1>
+            <p>Oct 18 – Oct 23 | Crafts, Gardens & Onsen Sanctuary</p>
             <div class="hotel-base">
-                <strong>🏨 Kanazawa Base:</strong> Boutique Stay near Kenroku-en & Higashi Chaya<br>
-                <strong>♨️ Onsen Sanctuary:</strong> Shirasagiyu Tawaraya (Yamanaka Onsen) — 800-year-old hot spring ryokan overlooking Kakusenkei Gorge.<br>
-                <strong>💡 Logistics Advantage:</strong> Hokuriku Shinkansen from Tokyo (2.5h), direct shuttle to Yamanaka Onsen, and Thunderbird train south to Kyoto.
+                <strong>📍 Base 1: HOTEL AMANEK Kanazawa (Oct 18-20 & 22-23)</strong><br>
+                Focus: Minimalist wood design, central Katamachi location, Edo-period gardens, geisha districts, samurai lanes, and Sea of Japan seafood.<br><br>
+                <strong>♨️ Base 2: Shirasagiyu Tawaraya (Oct 20-22)</strong><br>
+                Focus: 800-year-old ryokan, Kakusenkei Gorge river views, open-air rotenburo bathing, and multi-course kaiseki dining.
             </div>
         </div>
 
-        <!-- ==================== KANAZAWA DAY 1 ==================== -->
-        <div class="day-card" id="kanazawa-day1">
+        <!-- ==================== DAY 1 (OCT 18) ==================== -->
+        <div class="day-card" id="oct18">
             <div class="day-header">
-                <h2 class="day-title">KANAZAWA DAY 1</h2>
-                <span class="day-date">Wednesday, Oct 21</span>
+                <h2 class="day-title">SHINKANSEN & GEISHA QUARTERS</h2>
+                <span class="day-date">Sun, Oct 18</span>
             </div>
 
             <div class="top-tips">
-                <strong>🎯 DAY 1 TOP TIPS & STRATEGY</strong>
-                <ul>
-                    <li><strong>Bullet Train Arrival:</strong> Ride the Hokuriku Shinkansen straight from Tokyo Station to Kanazawa Station (~2.5h). Inspect the monumental wooden Tsuzumi-mon Gate at the station exit.</li>
-                    <li><strong>Kenroku-en Lighting:</strong> Visit Kenroku-en in the late afternoon to see the early preparation of *Yukitsuri* (traditional rope cones erected to protect ancient pine branches from heavy snow).</li>
-                </ul>
+                <strong>🎯 Day Preparation Notes</strong>
+                Travel day! Check out of your Ebisu hotel and grab a relaxed coffee. Buy a regional *ekiben* (bento box) at Tokyo Station before boarding the express Hokuriku Shinkansen.
             </div>
 
             <div class="time-block">
-                <h3><span class="time-badge">11:00 AM</span> Arrival & Kenroku-en Garden</h3>
-                <p>Arrive in Kanazawa. Check in / drop luggage at hotel. Walk straight into <strong>Kenroku-en</strong>, universally celebrated as one of Japan's "Three Great Landscape Gardens."</p>
+                <h3><span class="time-badge">10:22</span> Hokuriku Shinkansen @ Tokyo Station</h3>
+                <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Tokyo+Station" target="_blank">📍 View Station Location</a>
+            </div>
+            
+            <details>
+                <summary>💡 Train Logistics & Ekiben</summary>
+                <p>Board the <strong>Kagayaki 509</strong> (All-Seats Reserved) departing at 10:22 AM.</p>
+                <ol>
+                    <li><span class="step-tag">STEP 1</span> Arrive at Tokyo Station by 09:40 AM.</li>
+                    <li><span class="step-tag">STEP 2</span> Visit the massive "Ekibenya Matsuri" shop on the central concourse to buy your lunch boxes.</li>
+                    <li><span class="step-tag">STEP 3</span> Store large bags in the reserved oversized baggage area behind the last row of seats.</li>
+                </ol>
+            </details>
+
+            <div class="transit-alert">
+                <strong>🚆 Kagayaki 509 to Kanazawa (2.5 hours):</strong> Eat your bento as you cross through the Japanese Alps. Arrives at Kanazawa Station at exactly 12:49 PM.
+            </div>
+
+            <div class="time-block">
+                <h3><span class="time-badge">13:30</span> Check-in @ HOTEL AMANEK Kanazawa</h3>
+                <p>Take a 10-minute taxi from Kanazawa Station to the hotel in Katamachi. Drop your bags, freshen up, and head back out to explore the historic eastern side of the city.</p>
+            </div>
+
+            <div class="time-block">
+                <h3><span class="time-badge">15:30</span> Wooden Architecture @ Higashi Chaya</h3>
+                <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Higashi+Chaya+District" target="_blank">📍 View District Location</a>
             </div>
 
             <details>
-                <summary>💡 Cultural Context: Kenroku-en & Six Attributes</summary>
-                <p><strong>Kenroku-en:</strong> Translates to the "Garden of Six Attributes." According to Chinese landscape theory, a perfect garden must balance six opposing qualities: spaciousness vs. seclusion, artifice vs. antiquity, water features vs. panoramic views.</p>
-                <p><strong>Kotojitoro Lantern:</strong> The famous two-legged stone lantern standing at the edge of Kasumigaike Pond, designed to resemble the bridge of a Japanese koto zither.</p>
+                <summary>💡 Exploration & Shima Teahouse</summary>
+                <p>The largest preserved geisha district in Kanazawa. Because you are arriving in the late afternoon, the daytime tour bus crowds will be thinning out.</p>
+                <ol>
+                    <li><span class="step-tag">STEP 1</span> <strong>Shima Teahouse:</strong> Pay the small entry fee to explore this flawless 1820 geisha house, a designated National Important Cultural Property.</li>
+                    <li><span class="step-tag">STEP 2</span> <strong>Gold Leaf:</strong> Kanazawa produces 99% of Japan's gold leaf. Pick up some artisan crafts or try gold-leaf soft serve ice cream.</li>
+                </ol>
             </details>
 
             <div class="time-block">
-                <h3><span class="time-badge">02:00 PM</span> Kanazawa Castle Park & Gyokusen'inmaru</h3>
-                <p>Walk across the bridge into <strong>Kanazawa Castle Park</strong>. Visit the pristine, restored wooden **Gyokusen'inmaru Garden** and enjoy whisked matcha inside the traditional tea house overlooking the stepped stone walls.</p>
+                <h3><span class="time-badge">17:30</span> Twilight Walk @ Kazue-machi Chaya</h3>
+                <p>Walk across the Asano River just as the sun sets. This smaller, intimate geisha district runs right along the water. It is lit by traditional lanterns in the evening and is deeply cinematic.</p>
             </div>
 
             <div class="time-block">
-                <h3><span class="time-badge">05:00 PM</span> Higashi Chaya Geisha District Twilight Walk</h3>
-                <p>Explore the preserved dark-wood lattice teahouses (*Kagashimi*) of **Higashi Chaya**. Visit **Hakuichi** to try Kanazawa's famous edible gold-leaf ice cream.</p>
-            </div>
-
-            <a class="map-btn" href="https://www.google.com/maps/dir/Kanazawa+Station/Kenroku-en/Kanazawa+Castle+Park/Higashi+Chaya+District" target="_blank">📍 Open Kanazawa Day 1 Route Map</a>
-
-            <div class="meals-box">
-                <h4>🍽️ Kanazawa Day 1 Meal Plan</h4>
-                <ul>
-                    <li><strong>Lunch:</strong> Fresh Kantenba seafood or Kanazawa-style curry at <em>Champion's Curry</em>.</li>
-                    <li><strong>Matcha Break:</strong> Whisked matcha and wagashi at <em>Gyokusenan</em> inside Gyokusen'inmaru Garden.</li>
-                    <li><strong>Dinner:</strong> Fresh Sea of Japan seafood & Noto beef at <em>Kotobukiya</em> or local izakaya <em>Itaru Honten</em> (famous for blackthroat seaperch / Nodoguro).</li>
-                </ul>
+                <h3><span class="time-badge">19:00</span> Charcoal Izakaya Dinner @ Fuwari</h3>
+                <p>Housed in a restored, atmospheric wooden townhouse (machiya) with an open kitchen. Famous for charcoal-grilled local seafood and exceptional hospitality. (Reservations highly recommended).</p>
             </div>
         </div>
 
-        <!-- ==================== KANAZAWA DAY 2 ==================== -->
-        <div class="day-card" id="kanazawa-day2">
+        <!-- ==================== DAY 2 (OCT 19) ==================== -->
+        <div class="day-card" id="oct19">
             <div class="day-header">
-                <h2 class="day-title">KANAZAWA DAY 2</h2>
-                <span class="day-date">Thursday, Oct 22</span>
+                <h2 class="day-title">SUNRISE GARDENS & SAMURAI LANES</h2>
+                <span class="day-date">Mon, Oct 19</span>
             </div>
 
             <div class="top-tips">
-                <strong>🎯 DAY 2 TOP TIPS & STRATEGY</strong>
-                <ul>
-                    <li><strong>Omicho Market Seafood:</strong> Visit Omicho Market right at 8:30 AM for peak fresh crab and sea urchin before the lunch rush.</li>
-                    <li><strong>21st Century Museum:</strong> Book tickets online for Leandro Erlich's famous "Swimming Pool" installation.</li>
-                </ul>
+                <strong>🎯 Day Preparation Notes</strong>
+                Wake up early! Arriving at Kenroku-en at 7:00 AM guarantees you experience one of Japan's finest landscapes in total peace before the crowds arrive.
             </div>
 
             <div class="time-block">
-                <h3><span class="time-badge">08:30 AM</span> Omicho Market Morning Feast</h3>
-                <p>Walk through the bustling corridors of <strong>Omicho Market</strong>, Kanazawa's "Kitchen" since the Edo period. Watch fishmongers prepare local snow crab and sweet shrimp.</p>
+                <h3><span class="time-badge">07:00</span> Morning Serenity @ Kenroku-en Garden</h3>
+                <p>One of the "Three Great Gardens of Japan." Wander past the Kotojitoro stone lantern, the reflection ponds, and the oldest fountain in Japan in pristine morning silence.</p>
             </div>
 
             <div class="time-block">
-                <h3><span class="time-badge">10:30 AM</span> Nagamachi Samurai District & Nomura House</h3>
-                <p>Stroll between the preserved mud walls and cobblestone lanes of the **Nagamachi Samurai District**. Enter **Nomura Samurai House** to view a genuine Edo-period samurai garden and armor collection.</p>
+                <h3><span class="time-badge">08:30</span> Tea Ceremony @ Gyokusen'inmaru Garden</h3>
+                <p>Located right next to Kanazawa Castle. Enter the modern Gyokusen-an rest house, sit on the tatami, and drink traditional whisked matcha while looking out over the terraced stone garden.</p>
             </div>
 
+            <div class="time-block">
+                <h3><span class="time-badge">10:30</span> SANAA Architecture @ 21st Century Museum</h3>
+                <p>Walk through the striking circular glass structure. Be sure to visit Leandro Erlich’s famous "Swimming Pool" installation.</p>
+            </div>
+
+            <div class="transit-alert">
+                <strong>🚶 Walk to Omicho Market (15 mins):</strong> Walk north through the city center towards the famous food market for a massive seafood lunch.
+            </div>
+
+            <div class="time-block">
+                <h3><span class="time-badge">12:30</span> Sea of Japan Sushi @ Omicho Market</h3>
+            </div>
+            
             <details>
-                <summary>💡 Cultural Context: Nomura Samurai House</summary>
-                <p><strong>Nomura House:</strong> Home to a high-ranking samurai family serving the Maeda Clan. Its courtyard garden features a crystal-clear stream fed by the historic Onosho Canal, ancient bayberry trees, and a waterfall framed by stone lanterns.</p>
+                <summary>💡 Food Hall Notes</summary>
+                <p>Kanazawa's 300-year-old kitchen. The seafood pulled from the Sea of Japan here is legendary.</p>
+                <ul>
+                    <li><strong>The Order:</strong> Get in line for a *kaisendon* (a massive bowl of rice topped with thick cuts of fresh yellowtail, sweet shrimp, snow crab, and edible gold leaf).</li>
+                </ul>
             </details>
 
             <div class="time-block">
-                <h3><span class="time-badge">02:00 PM</span> 21st Century Museum of Contemporary Art</h3>
-                <p>Explore the circular glass museum building designed by SANAA, featuring modern art installations integrated into open courtyards.</p>
+                <h3><span class="time-badge">15:00</span> Walk in Samurai Footsteps (Nagamachi)</h3>
+                <a class="map-btn" href="https://www.google.com/maps/dir/?api=1&origin=Nagamachi+Yuzen-kan,+Kanazawa&destination=Yanagiya+Saraku,+Kanazawa&waypoints=Takada+Family+House,+Kanazawa%7CKanazawa+City+Ashigaru+Museum%7CNomura-ke+Samurai+Residence%7CKanazawa+Shinise+Memorial+Hall%7CKaburaki,+Kanazawa&travelmode=walking" target="_blank">🗺️ Launch Nagamachi Samurai Walk GPS</a>
             </div>
 
-            <a class="map-btn" href="https://www.google.com/maps/dir/Omicho+Market/Nagamachi+Samurai+District/Nomura+Samurai+House/21st+Century+Museum+of+Contemporary+Art" target="_blank">📍 Open Kanazawa Day 2 Route Map</a>
+            <details>
+                <summary>💡 7-Stop Self-Guided Route Notes</summary>
+                <p>Walk along the Ōnoshō Canal, admiring the earthen walls where samurai once lived. Click the GPS button above to follow the exact Lonely Planet walking loop!</p>
+                <ol>
+                    <li><span class="step-tag">STOP 1</span> <strong>Nagamachi Yuzen-kan:</strong> Kaga silk dyeing center.</li>
+                    <li><span class="step-tag">STOP 2</span> <strong>Takada Family House:</strong> Restored gatekeepers' quarters.</li>
+                    <li><span class="step-tag">STOP 3</span> <strong>Ashigaru Museum:</strong> Lower-class samurai dwellings.</li>
+                    <li><span class="step-tag">STOP 4</span> <strong>Nomura-ke Residence:</strong> Wealthy samurai home with immaculate tatami rooms and famous inner gardens.</li>
+                    <li><span class="step-tag">STOP 5</span> <strong>Kanazawa Shinise & Maeda Museums:</strong> Samurai armor and historical displays.</li>
+                    <li><span class="step-tag">STOP 6</span> <strong>Kaburaki:</strong> Traditional Kutani pottery shop.</li>
+                    <li><span class="step-tag">STOP 7</span> <strong>Yanagiya Saraku:</strong> Soba dishes and house-brewed beer with garden views.</li>
+                </ol>
+            </details>
 
-            <div class="meals-box">
-                <h4>🍽️ Kanazawa Day 2 Meal Plan</h4>
-                <ul>
-                    <li><strong>Breakfast / Seafood:</strong> Kaisen-don bowl overflowing with fresh local sashimi at <em>Omicho Shokudo</em> or <em>Iki-iki Tei</em>.</li>
-                    <li><strong>Coffee Break:</strong> Drip coffee at <em>Curio Espresso & Vintage Design</em>.</li>
-                    <li><strong>Dinner:</strong> Modern Kanazawa Kappo cuisine at <em>Aoi</em> or charcoal-grilled skewers at <em>Fugetsu</em>.</li>
-                </ul>
+            <div class="time-block">
+                <h3><span class="time-badge">19:00</span> Legendary Izakaya Dinner @ Itaru Honten</h3>
+                <p>Located conveniently near your hotel. This high-energy, classic izakaya is famous for its thick cuts of sashimi and specifically *Nodoguro* (blackthroat seaperch), Kanazawa's incredibly fatty and prized local fish. (Go early to queue if you don't have a reservation).</p>
             </div>
         </div>
 
-        <!-- ==================== YAMANAKA ONSEN ==================== -->
-        <div class="day-card" id="yamanaka-day">
+        <!-- ==================== DAY 3 (OCT 20) ==================== -->
+        <div class="day-card" id="oct20">
             <div class="day-header">
-                <h2 class="day-title">YAMANAKA ONSEN SANCTUARY</h2>
-                <span class="day-date">Friday, Oct 23</span>
+                <h2 class="day-title">INTO THE GORGE (YAMANAKA ONSEN)</h2>
+                <span class="day-date">Tue, Oct 20</span>
             </div>
 
             <div class="top-tips">
-                <strong>🎯 ONSEN DAY TOP TIPS & STRATEGY</strong>
-                <ul>
-                    <li><strong>Ryokan Onsen Etiquette:</strong> Wash thoroughly at the wooden sit-down shower stalls before stepping into the communal thermal waters. No swimwear allowed; small hand towels stay out of the bathwater.</li>
-                    <li><strong>Ryokan Check-in:</strong> Arrive by 03:00 PM to maximize relaxation, enjoy your private in-room tea service, and reserve your private open-air bath (*Rotenburo*) time slot.</li>
-                </ul>
+                <strong>🎯 Day Preparation Notes</strong>
+                Ryokan day! <strong>Leave your large suitcases at Hotel Amanek's front desk.</strong> Pack only a small overnight bag with your essentials for the next two nights to travel weightlessly into the mountains.
+            </div>
+
+            <div class="transit-alert">
+                <strong>🚆 Train to Kaga Onsen Station (~20 mins):</strong> Take the limited express Thunderbird or Shirasagi train from Kanazawa Station directly to Kaga Onsen Station.
             </div>
 
             <div class="time-block">
-                <h3><span class="time-badge">12:30 PM</span> Transit to Yamanaka Onsen Valley</h3>
-                <p>Board the local shuttle or train down to Kaga-Onsen Station and transit into the lush mountain valley of **Yamanaka Onsen**.</p>
-            </div>
-
-            <div class="time-block">
-                <h3><span class="time-badge">01:30 PM</span> Kakusenkei Gorge & Ayatori Bridge Walk</h3>
-                <p>Walk along the serene 1.3km **Kakusenkei Gorge** stone path following the roaring mountain river. Cross the magenta, S-curved **Ayatori Bridge** designed by Hiroshi Teshigahara and visit the rustic **Koroan Tea House** set right along the water rapids.</p>
+                <h3><span class="time-badge">13:30</span> Check-in @ Shirasagiyu Tawaraya</h3>
             </div>
 
             <details>
-                <summary>💡 Cultural Context: Yamanaka Onsen & Matsuo Basho</summary>
-                <p><strong>800-Year Thermal History:</strong> Discovered over 1,300 years ago by a Buddhist monk, Yamanaka is famous for hydrogen-rich, mineral bathwaters praised by legendary haiku poet Matsuo Basho as one of Japan's top three healing hot springs.</p>
-                <p><strong>Yamanaka Lacquerware (*Shuraku*):</strong> The town is world-renowned for exquisite hand-turned wood lacquerware, where artisans carve raw timber into delicate tea caddies and soup bowls showcasing natural wood grain.</p>
+                <summary>💡 Arrival & Ryokan Etiquette</summary>
+                <p>Take the hotel shuttle (or a quick taxi) from the station deep into Yamanaka Onsen. </p>
+                <ul>
+                    <li><strong>The Vibe:</strong> Founded 800 years ago, this ryokan sits directly on the Kakusenkei Gorge.</li>
+                    <li><strong>The Protocol:</strong> Take off your shoes at the entrance, put on your provided yukata (cotton robe), and leave your worldly stress at the door.</li>
+                </ul>
             </details>
 
             <div class="time-block">
-                <h3><span class="time-badge">03:30 PM</span> Ryokan Check-In: Shirasagiyu Tawaraya</h3>
-                <p>Check into **Shirasagiyu Tawaraya** (operating continuously for 800 years). Change into traditional *Yukata* robes, soak in the open-air hot spring baths overlooking the forest gorge, and prepare for your multi-course Kaiseki banquet.</p>
+                <h3><span class="time-badge">15:00</span> Rotenburo Soak & River Views</h3>
+                <p>Spend the afternoon soaking in the open-air baths (rotenburo). The natural hot spring water flows continuously while you look directly out over the rushing river and autumn trees.</p>
             </div>
 
-            <a class="map-btn" href="https://www.google.com/maps/dir/Kakusenkei+Gorge/Ayatori+Bridge/Shirasagiyu+Tawaraya" target="_blank">📍 Open Yamanaka Onsen Gorge Map</a>
+            <div class="time-block">
+                <h3><span class="time-badge">18:30</span> Kaiseki Dinner (At Ryokan)</h3>
+                <p>Experience traditional *kaiseki-ryori*—a multi-course dinner of hyper-seasonal, beautifully plated local ingredients, usually featuring local Kaga vegetables and fresh seafood.</p>
+            </div>
+        </div>
 
-            <div class="meals-box">
-                <h4>🍽️ Ryokan Feast & Onsen Dining</h4>
+        <!-- ==================== DAY 4 (OCT 21) ==================== -->
+        <div class="day-card" id="oct21">
+            <div class="day-header">
+                <h2 class="day-title">THE ZERO-TRANSIT GORGE RETREAT</h2>
+                <span class="day-date">Wed, Oct 21</span>
+            </div>
+
+            <div class="top-tips">
+                <strong>🎯 Day Preparation Notes</strong>
+                You have absolutely no transit today. This is your pure "middle day" reward. While the one-night guests rush to check out, you get the baths and the village entirely to yourself.
+            </div>
+
+            <div class="time-block">
+                <h3><span class="time-badge">08:30</span> Traditional Ryokan Breakfast</h3>
+                <p>A massive, savory spread featuring grilled fish, tamagoyaki (rolled omelet), miso soup, pickled vegetables, and rice.</p>
+            </div>
+
+            <div class="time-block">
+                <h3><span class="time-badge">10:30</span> Mossy Paths @ Kakusenkei Gorge</h3>
+                <p>Walk the 1.3-kilometer riverside trail winding through the gorge. The air is incredibly fresh, surrounded by moss, rock formations, and dense forest.</p>
+            </div>
+
+            <div class="time-block">
+                <h3><span class="time-badge">11:30</span> S-Curve Architecture @ Ayatori Bridge</h3>
+                <p>Cross this strikingly modern, purple S-shaped steel bridge designed by Hiroshi Teshigahara, contrasting beautifully against the ancient forest. If the riverbed kawadoko (tea pavilions) are open below, stop for a matcha and sweet.</p>
+            </div>
+
+            <div class="time-block">
+                <h3><span class="time-badge">13:00</span> Casual Lunch & Craft Shopping @ Yuge-dori</h3>
+            </div>
+            
+            <details>
+                <summary>💡 Town Stroll</summary>
+                <p>Walk down the main village street.</p>
                 <ul>
-                    <li><strong>Tea Welcome:</strong> In-room whisked green tea and artisan sweet upon arrival at the ryokan.</li>
-                    <li><strong>Ryokan Dinner Banquet:</strong> Multi-course seasonal *Kaiseki* meal served in your room/private dining hall, featuring Noto beef, fresh Sea of Japan crab, seasonal mountain vegetables (*Sansai*), and local Ishikawa sake.</li>
-                    <li><strong>Next Morning Breakfast:</strong> Traditional Japanese ryokan breakfast with grilled local fish, miso soup cooked over clay stoves, and mountain rice.</li>
+                    <li><strong>Shopping:</strong> Yamanaka is famous for wood-turning lacquerware. Browse the small artisan studios for stunning wooden bowls.</li>
+                    <li><strong>Lunch:</strong> Grab a simple, hearty bowl of hot soba or freshly fried croquettes from a local shop front.</li>
                 </ul>
+            </details>
+
+            <div class="time-block">
+                <h3><span class="time-badge">15:00</span> Afternoon Soak & Ryokan Relax</h3>
+                <p>Return to Tawaraya, put your yukata back on, and take advantage of the empty baths before the new afternoon guests arrive. Followed by your second kaiseki dinner at 18:30.</p>
+            </div>
+        </div>
+
+        <!-- ==================== DAY 5 (OCT 22) ==================== -->
+        <div class="day-card" id="oct22">
+            <div class="day-header">
+                <h2 class="day-title">ZEN RETURN TO KANAZAWA</h2>
+                <span class="day-date">Thu, Oct 22</span>
+            </div>
+
+            <div class="top-tips">
+                <strong>🎯 Day Preparation Notes</strong>
+                A slow, unhurried transition back to the city. No highway buses or rushed day trips—just a peaceful return to your hotel and a relaxed afternoon of modern Zen art.
+            </div>
+
+            <div class="time-block">
+                <h3><span class="time-badge">10:00</span> Check-out & Return Transit</h3>
+                <p>Take the shuttle back to Kaga Onsen Station, board the limited express train, and arrive back in Kanazawa before Noon.</p>
+            </div>
+
+            <div class="time-block">
+                <h3><span class="time-badge">12:30</span> Check-in @ HOTEL AMANEK Kanazawa</h3>
+                <p>Check back into Amanek, reunite with your large suitcases held at the front desk, and drop your bags in your new room.</p>
+            </div>
+
+            <div class="time-block">
+                <h3><span class="time-badge">14:00</span> Minimalist Philosophy @ D.T. Suzuki Museum</h3>
+                <p>Walk over to this stunning architectural space dedicated to the philosopher who brought Zen Buddhism to the West. Spend time sitting quietly at the "Water Mirror Bowl," a massive, dark reflection pool designed for pure contemplation.</p>
+            </div>
+
+            <div class="time-block">
+                <h3><span class="time-badge">16:00</span> Kutani Pottery & Nagamachi Stroll</h3>
+                <a class="map-btn" href="https://www.google.com/maps/dir/?api=1&origin=Nagamachi+Yuzen-kan,+Kanazawa&destination=Yanagiya+Saraku,+Kanazawa&waypoints=Takada+Family+House,+Kanazawa%7CKanazawa+City+Ashigaru+Museum%7CNomura-ke+Samurai+Residence%7CKanazawa+Shinise+Memorial+Hall%7CKaburaki,+Kanazawa&travelmode=walking" target="_blank">🗺️ Launch Nagamachi Samurai Walk GPS</a>
+            </div>
+
+            <details>
+                <summary>💡 Afternoon Pottery Stroll Notes</summary>
+                <p>Return to the earthen walls of the samurai district. Browse the artisan shops (like Kaburaki at Stop 6) for traditional Kutani pottery—highly detailed, vibrantly painted porcelain unique to Ishikawa Prefecture.</p>
+            </details>
+
+            <div class="time-block">
+                <h3><span class="time-badge">19:00</span> Casual Final Dinner @ Oriental Brewing</h3>
+                <p>After multi-course kaiseki meals and high-end izakayas, enjoy a relaxed final night with local Kanazawa craft beer and wood-fired pizzas or casual pub food before heading to Kyoto the next morning!</p>
             </div>
         </div>
 
