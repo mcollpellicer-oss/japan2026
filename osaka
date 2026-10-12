@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Osaka & Koyasan Leg - Japan 2026</title>
+    <style>
+        :root {
+            --primary-bg: #f9f9f7;
+            --card-bg: #ffffff;
+            --text-main: #2c3e50;
+            --accent: #d97706;
+            --accent-dark: #92400e;
+            --border: #e2e8f0;
+            --subtle-bg: #f8fafc;
+            --tip-bg: #fffbeb;
+            --tip-border: #f59e0b;
+        }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--primary-bg);
+            color: var(--text-main);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        nav {
+            background-color: #1a202c;
+            display: flex;
+            justify-content: space-around;
+            padding: 14px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+        nav a {
+            color: #cbd5e0;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+            transition: color 0.2s;
+        }
+        nav a:hover, nav a.active {
+            color: #ffffff;
+            border-bottom: 2px solid var(--accent);
+        }
+        .day-nav {
+            background-color: #2d3748;
+            display: flex;
+            justify-content: flex-start;
+            gap: 8px;
+            padding: 8px 12px;
+            position: sticky;
+            top: 49px;
+            z-index: 999;
+            border-top: 1px solid #4a5568;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            overflow-x: auto;
+            white-space: nowrap;
+            scrollbar-width: none;
+        }
+        .day-nav::-webkit-scrollbar { display: none; }
+        .day-nav a {
+            color: #e2e8f0;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 14px;
+            background-color: #4a5568;
+            transition: all 0.2s;
+        }
+        .day-nav a:hover {
+            background-color: var(--accent);
+            color: white;
+        }
+        .container {
+            padding: 24px 16px;
+            max-width: 850px;
+            margin: 0 auto;
+        }
+        .header-card {
+            background: linear-gradient(135deg, #78350f, #1a202c);
+            color: white;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 28px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .header-card h1 { margin: 0 0 8px 0; font-size: 28px; letter-spacing: 1px; }
+        .header-card p { margin: 0; color: #fef3c7; font-size: 15px; }
+        .hotel-base {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            padding: 14px 18px;
+            margin-top: 16px;
+            font-size: 14px;
+            color: #fffbeb;
+            text-align: left;
+        }
+        .tapa-guide {
+            background-color: #ffffff;
+            border: 2px solid var(--accent);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 28px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        .tapa-guide h3 {
+            margin: 0 0 12px 0;
+            color: var(--accent-dark);
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 8px;
+        }
+        .tapa-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 14px;
+            margin-top: 12px;
+        }
+        .tapa-item {
+            background-color: var(--subtle-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 12px;
+            font-size: 13.5px;
+        }
+        .tapa-item strong { color: var(--accent-dark); display: block; margin-bottom: 4px; font-size: 14px; }
+        .day-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 22px;
+            margin-bottom: 32px;
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+            scroll-margin-top: 95px;
+        }
+        .day-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 10px;
+            margin-bottom: 18px;
+        }
+        .day-title { font-size: 22px; font-weight: 700; color: var(--accent); margin: 0; }
+        .day-date {
+            font-size: 14px;
+            font-weight: 600;
+            background-color: #fffbeb;
+            color: var(--accent-dark);
+            padding: 4px 12px;
+            border-radius: 16px;
+            border: 1px solid #fef3c7;
+        }
+        .top-tips {
+            background-color: var(--tip-bg);
+            border-left: 4px solid var(--tip-border);
+            padding: 14px 16px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        .top-tips strong { color: #d97706; display: block; margin-bottom: 6px; font-size: 15px; }
+        .time-block { margin-bottom: 20px; }
+        .time-block h3 {
+            font-size: 16px;
+            color: #1a202c;
+            margin: 0 0 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .time-badge {
+            background-color: #2d3748;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        .spot-link {
+            color: var(--text-main);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .spot-link:hover {
+            color: var(--accent);
+            text-decoration: underline;
+        }
+        .meals-box {
+            background-color: var(--subtle-bg);
+            border: 1px solid var(--border);
+            padding: 16px;
+            border-radius: 8px;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+        .meals-box h4 { margin: 0 0 10px 0; color: #2d3748; font-size: 15px; border-bottom: 1px solid var(--border); padding-bottom: 6px; }
+        .meals-box ul { margin: 0; padding-left: 18px; }
+        .meals-box li { margin-bottom: 6px; }
+        .backup-tag {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 700;
+            color: #dc2626;
+            background-color: #fee2e2;
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-right: 4px;
+        }
+        .step-tag {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 700;
+            color: #d97706;
+            background-color: #fef3c7;
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-right: 4px;
+        }
+        .transit-alert {
+            border-left: 4px solid var(--accent);
+            padding: 10px 14px;
+            font-size: 13.5px;
+            margin: 16px 0;
+            background-color: #fffbeb;
+            color: #78350f;
+        }
+        details {
+            background-color: #ffffff;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 10px 14px;
+            margin: 12px 0;
+        }
+        summary { font-weight: 600; cursor: pointer; color: var(--accent); font-size: 14px; }
+        details p { font-size: 13.5px; margin: 10px 0 4px 0; color: #4a5568; line-height: 1.5; }
+        details ul, details ol { padding-left: 18px; margin-top: 6px; font-size: 13.5px; color: #4a5568; }
+        details li { margin-bottom: 6px; }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html">TOKYO</a>
+        <a href="regional.html">KANAZAWA</a>
+        <a href="kyoto.html">KYOTO</a>
+        <a href="osaka.html" class="active">OSAKA & KOYASAN</a>
+    </nav>
+
+    <div class="day-nav">
+        <a href="#oct26">OCT 26</a>
+        <a href="#oct27">OCT 27</a>
+        <a href="#oct28">OCT 28</a>
+    </div>
+
+    <div class="container">
+        
+        <div class="header-card">
+            <h1>Osaka Food Experience & Koyasan Leg</h1>
+            <p>Oct 26 – Oct 28 | Street Food Heaven, Izakaya Alleys & Sacred Mountain</p>
+            <div class="hotel-base">
+                <strong>🏨 Osaka Base: Centara Life Namba Hotel Osaka (€62.2 / Oct 26–27)</strong><br>
+                Focus: Deluxe Twin, Kuromon Market, Namba street food, specialty roasters, and direct access to Nankai Namba Station.<br><br>
+                <strong>🧘 Koyasan Base: Shukubo Temple Stay (Oct 27–28)</strong><br>
+                Focus: Shojin Ryori monastic cuisine, Okunoin Cemetery night walk, and morning fire rituals.<br><br>
+                <strong>🎒 Luggage Strategy:</strong> Store main suitcases in Nankai Namba Station multi-day lockers on Oct 27 morning; carry backpacks only to Koyasan!
+            </div>
+        </div>
+
+        <!-- ==================== OSAKA FOOD & "TAPA" CRAWL GUIDE ==================== -->
+        <div class="tapa-guide">
+            <h3>🐙 Osaka Street Food & "Tapa Route" Essentials</h3>
+            <p style="margin: 0 0 12px 0; font-size: 13.5px; color: #4a5568;">
+                Osaka is famous for <em>Kuidaore</em> ("eat until you drop"). Treat these iconic Osakan specialties like a Japanese tapeo route!
+            </p>
+            <div class="tapa-grid">
+                <div class="tapa-item">
+                    <strong>1. Takoyaki (Octopus Balls)</strong>
+                    Molten batter balls filled with octopus, topped with sweet brown sauce, kewpie mayo & bonito flakes.<br>
+                    📍 <em>Wanaka Honten / Takoyaki Umaiya / Kogaryu</em>
+                </div>
+                <div class="tapa-item">
+                    <strong>2. Okonomiyaki (Savory Pancake)</strong>
+                    Griddled cabbage pancake with pork belly, seafood, egg & sweet savory glaze.<br>
+                    📍 <em>Fukutaro / Yukari Tensan / Chibo</em>
+                </div>
+                <div class="tapa-item">
+                    <strong>3. Kushikatsu & Doteyaki</strong>
+                    Crispy deep-fried meat/veggie skewers (no double-dipping!) + miso-simmered beef tendon.<br>
+                    📍 <em>Tori no Su / Kushikatsu Daruma / Wakabaya</em>
+                </div>
+                <div class="tapa-item">
+                    <strong>4. Kitsune Udon & Oshizushi</strong>
+                    Thick chewy udon in golden dashi with sweet fried tofu + traditional pressed box sushi.<br>
+                    📍 <em>Imai Honten / Mimiu Honten / Yoshino Sushi</em>
+                </div>
+                <div class="tapa-item">
+                    <strong>5. Specialty Coffee & Drinks</strong>
+                    World-class light roasters & riverfront craft beer bars.<br>
+                    📍 <em>Lilo Coffee / Mel Coffee / Beer Belly Tenma / Moto Coffee</em>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== DAY 1 ==================== -->
+        <div class="day-card" id="oct26">
+            <div class="day-header">
+                <h2 class="day-title">KYOTO TRANSITION & NAMBA TAPA CRAWL</h2>
+                <span class="day-date">Mon, Oct 26</span>
+            </div>
+
+            <div class="top-tips">
+                <strong>🎯 Day Preparation Notes</strong>
+                Arrive from Kyoto, drop bags at Centara Life Namba, and jump straight into an epic food, market, and neon night crawl across Namba, Shinsekai, and Dotonbori!
+            </div>
+
+            <div class="transit-alert">
+                <strong>🚆 Transit from Kyoto to Osaka (~45 mins):</strong> Keihan Line from Sanjo/Gion-Shijo straight to Yodoyabashi, or JR Special Rapid from Kyoto Station to Osaka/Namba (~¥570).
+            </div>
+
+            <div class="time-block">
+                <h3><span class="time-badge">13:30</span> <a href="https://www.google.com/maps/search/?api=1&query=Centara+Life+Namba+Hotel+Osaka" target="_blank" class="spot-link">Check-in @ Centara Life Namba Hotel Osaka</a></h3>
+                <p>Check into your Deluxe Twin room (€62.2). Settle in and unpack—you are perfectly situated in Namba near all top markets and food alleys.</p>
+            </div>
+
+            <div class="time-block">
+                <h3><span class="time-badge">15:00</span> <a href="https://www.google.com/maps/search/?api=1&query=Lilo+Coffee+Roasters+Osaka" target="_blank" class="spot-link">Specialty Coffee Stop @ Lilo Coffee Roasters</a></h3>
+                <p>Grab a single-origin pour-over at <strong>Lilo Coffee Roasters</strong> or <strong>Mel Coffee Roasters</strong> in Amerikamura.</p>
+            </div>
+
+            <div class="time-block">
+                <h3><span class="time-badge">16:30</span> <a href="https://www.google.com/maps/search/?api=1&query=Tsutenkaku+Tower+Shinsekai" target="_blank" class="spot-link">Tsutenkaku Tower & Shinsekai Alleys 🌇</a></h3>
+                <p>Head down to Shinsekai as dusk falls and the retro arcade lanterns light up around Tsutenkaku Tower. Start your "tapa route" with hot skewers at <strong>Tori no Su</strong> or <strong>Kushikatsu Daruma</strong> along with slow-simmered beef tendon (doteyaki).</p>
+            </div>
+
+            <div class="time-block">
+                <h3><span class="time-badge">19:00</span> <a href="https://www.google.com/maps/search/?api=1&query=Wanaka+Takoyaki+Namba" target="_blank" class="spot-link">Dotonbori Street Food Crawl & Glico Sign</a></h3>
+                <p>Stroll through the neon-lit Dotonbori canal. Eat piping-hot molten takoyaki at <strong>Wanaka Honten</strong> (or <strong>Takoyaki Umaiya</strong>) and freshly grilled cabbage okonomiyaki at <strong>Fukutaro</strong> or <strong>Yukari</strong>.</p>
+            </div>
+
+            <div class="meals-box">
+                <h4>🍽️ Day 1 Tapa Lineup & Nightcaps</h4>
+                <ul>
+                    <li><strong>Takoyaki Stop:</strong> <em>Wanaka Honten</em> or <em>Takoyaki Umaiya</em>.</li>
+                    <li><strong>Okonomiyaki Stop:</strong> <em>Fukutaro</em> or <em>Yukari Tensan</em>.</li>
+                    <li><strong>Kushikatsu & Doteyaki:</strong> <em>Tori no Su</em> (Shinsekai) or <em>Wakabaya</em> (Fukushima).</li>
+                    <li><strong>Late-Night Drinks:</strong> Local craft beers at <em>Beer Belly Tenma</em> or drinks along the <em>Hozenji Yokocho</em> stone alley.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ==================== DAY 2 ==================== -->
+        <div class="day-card" id="oct27">
+            <div class="day-header">
+                <h2 class="day-title">ASCENT TO SACRED KOYASAN</h2>
+                <span class="day-date">Tue, Oct 27</span>
+            </div>
+
+            <div class="top-tips">
+                <strong>🎯 Day Preparation Notes (Locker Strategy)</strong>
+                <strong>CRITICAL LOGISTICS:</strong> Pack 1 small overnight backpack with 1 night of clothes and toilet items. Store your main suitcases in Nankai Namba Station multi-day coin lockers before boarding the train to Koyasan!
+            </div>
+
+            <details>
+                <summary>💡 Step-by-Step Koyasan Transit & Locker Routine</summary>
+                <ol>
+                    <li><span class="step-tag">STEP 1</span> <strong>08:30 AM:</strong> Check out of Centara Life Namba Hotel. Walk 5 mins to Nankai Namba Station.</li>
+                    <li><span class="step-tag">STEP 2</span> Store main suitcases in large multi-day coin lockers (3rd Floor North Gate / Central Gate, ~¥800/day).</li>
+                    <li><span class="step-tag">STEP 3</span> Purchase the <strong>Koyasan World Heritage Ticket</strong> (covers round-trip Nankai train, cable car, and unlimited Koyasan buses).</li>
+                    <li><span class="step-tag">STEP 4</span> Board Nankai Koya Line Express train to Gokurakubashi Station (~90 mins), then switch to the cable car up the mountain face (5 mins).</li>
+                </ol>
+            </details>
+
+            <div class="time-block">
+                <h3><span class="time-badge">12:30</span> <a href="https://www.google.com/maps/search/?api=1&query=Koyasan+Shukubo+Temple" target="_blank" class="spot-link">Arrival & Check-in @ Shukubo Temple Stay</a></h3>
+                <p>Arrive in Koyasan, the sacred 1,200-year-old headquarters of Shingon Buddhism founded by monk Kobo Daishi. Check into your temple stay lodge (Shukubo).</p>
+            </div>
+
+            <div class="time-block">
+                <h3><span class="time-badge">14:00</span> <a href="https://www.google.com/maps/search/?api=1&query=Danjo+Garan+Koyasan" target="_blank" class="spot-link">Danjo Garan & Kongobu-ji Temple</a></h3>
+                <p>Explore <strong>Danjo Garan</strong>, the central temple complex with its towering vermilion Konpon Daito pagoda. Visit <strong>Kongobu-ji</strong>, head temple of Shingon Buddhism, featuring Banryutei (Japan's largest rock garden depicting two dragons emerging from clouds).</p>
+            </div>
+
+            <div class="time-block">
+                <h3><span class="time-badge">17:30</span> <a href="#" class="spot-link">Shojin Ryori Monastic Dinner</a></h3>
+                <p>Dine on traditional <em>Shojin Ryori</em>—exquisite Buddhist vegetarian cuisine cooked without meat, fish, garlic, or onions, focusing on seasonal wild mountain plants, sesame tofu (*Goma-dofu*), and tempura.</p>
+            </div>
+
+            <div class="time-block">
+                <h3><span class="time-badge">19:30</span> <a href="https://www.google.com/maps/search/?api=1&query=Okunoin+Cemetery+Koyasan" target="_blank" class="spot-link">Night Walk @ Okunoin Cemetery 🌙</a></h3>
+                <p>Take an ethereal evening walk along the 2-kilometer stone path under ancient cedar trees lit by thousands of tall stone lanterns, leading to Kobo Daishi's mausoleum.</p>
+            </div>
+        </div>
+
+        <!-- ==================== DAY 3 ==================== -->
+        <div class="day-card" id="oct28">
+            <div class="day-header">
+                <h2 class="day-title">MARKET LUNCH, KITSUNE UDON & TOKYO RETURN</h2>
+                <span class="day-date">Wed, Oct 28</span>
+            </div>
+
+            <div class="top-tips">
+                <strong>🎯 Day Preparation Notes</strong>
+                Wake up early for temple prayers and the Goma fire ceremony before heading back down to Namba to retrieve your main bags and enjoy an epic market & noodle lunch before boarding the Shinkansen!
+            </div>
+
+            <div class="time-block">
+                <h3><span class="time-badge">06:00</span> <a href="#" class="spot-link">Morning Chant & Goma Fire Ritual</a></h3>
+                <p>Participate in the monk's morning chanting ceremony (*Otsutome*) followed by the sacred *Goma* fire ritual, where wooden prayer sticks are burned in consecrated flames to purify desires.</p>
+            </div>
+
+            <div class="transit-alert">
+                <strong>🚃 Mountain Descent & Suitcase Retrieval (~2 hrs):</strong> Take the bus to Koyasan station, cable car down to Gokurakubashi, and Nankai Express train back to Nankai Namba Station. Retrieve your main suitcases directly from your station lockers!
+            </div>
+
+            <div class="time-block">
+                <h3><span class="time-badge">11:30</span> <a href="https://www.google.com/maps/search/?api=1&query=Kuromon+Ichiba+Market+Osaka" target="_blank" class="spot-link">Kuromon Market Crawl & Kitsune Udon Lunch</a></h3>
+                <p>Walk 5 minutes from Namba Station through <strong>Kuromon Ichiba Market</strong> for sea urchin, fresh scallops, and oshizushi (pressed sushi at <strong>Yoshino Sushi</strong>). Sit down at <strong>Imai Honten</strong> or <strong>Mimiu Honten</strong> for authentic Osakan Kitsune Udon.</p>
+            </div>
+
+            <div class="time-block">
+                <h3><span class="time-badge">13:30</span> <a href="https://www.google.com/maps/search/?api=1&query=Shin-Osaka+Station" target="_blank" class="spot-link">Shinkansen Transit @ Shin-Osaka Station</a></h3>
+                <p>Take a 15-minute subway/taxi ride to Shin-Osaka Station. Board the bullet train (Shinkansen) bound for Tokyo Station (~2.5 hours) to begin your 4-night finale at <strong>Skytree View Kinshicho</strong>!</p>
+            </div>
+
+            <div class="meals-box">
+                <h4>🍽️ Day 3 Lunch Lineup</h4>
+                <ul>
+                    <li><strong>Market Eats:</strong> Fresh sea urchin, grilled scallops & press sushi (<em>Yoshino Sushi</em>) at Kuromon Market.</li>
+                    <li><strong>Noodles:</strong> Kitsune Udon at <em>Imai Honten</em> or <em>Mimiu Honten</em>.</li>
+                    <li><strong>Coffee & Sweets:</strong> Pour-over at <em>Moto Coffee</em> or <em>Brooklyn Roasting Company</em> along the river.</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
